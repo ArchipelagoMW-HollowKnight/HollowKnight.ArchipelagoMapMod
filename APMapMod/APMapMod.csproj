@@ -8,7 +8,7 @@
     <Product>APMapMod</Product>
     <Description>A Hollow Knight mod that works with the Archipelago Multiworld randomizer to put pins on the map for all checks.</Description>
     <Authors>Kono Tyran</Authors>
-    <AssemblyVersion>0.2.0.*</AssemblyVersion>
+    <AssemblyVersion>0.3.0.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
     <LangVersion>latest</LangVersion>
     <HollowKnightRefs>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
