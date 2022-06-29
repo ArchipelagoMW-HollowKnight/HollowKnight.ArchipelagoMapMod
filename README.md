@@ -1,24 +1,22 @@
-# Randomizer Map S
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/syyePhenomenol/HollowKnight.MapModS)
-![Downloads GitHub all releases](https://img.shields.io/github/downloads/syyePhenomenol/HollowKnight.MapModS/total)
+# APMapMod
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/KonoTyran/HollowKnight.ArchipelagoMapMod)
+![Downloads GitHub all releases](https://img.shields.io/github/downloads/KonoTyran/HollowKnight.ArchipelagoMapMod/total)
 
-Randomizer Map S is a Hollow Knight mod used with Randomizer 4. It helps to find both item and transition checks.
+Archipelago Map Mod is a Hollow Knight mod used with Archipelago Multiworld Randomizer. It helps to find both item and transition checks.
 
-This fork of CaptainDapper's original mod has been expanded on with many more features and bug fixes.
+This fork of [Phenomenol](https://github.com/syyePhenomenol)'s [fork](https://github.com/syyePhenomenol/HollowKnight.MapModS) of CaptainDapper's original mod has been expanded on with many more features and bug fixes.
 
 Dependencies:
-- [RandomizerMod v4.0.3](https://github.com/homothetyhk/RandomizerMod) and all of its dependencies. Does NOT work with earlier versions
-- [ConnectionMetadataInjector v1.1.8107.6258](https://github.com/BadMagic100/ConnectionMetadataInjector). Does NOT work with earlier versions
+- [Archipleago.HollowKnight](https://github.com/homothetyhk/RandomizerMod) and all of its dependencies.
 - [MagicUI v1.4.8178.42957](https://github.com/BadMagic100/HollowKnight.MagicUI). Does NOT work with earlier versions
 - [Vasi](https://github.com/fifty-six/HollowKnight.Vasi)
+- [Satchel](https://github.com/PrashantMohta/Satchel)
 
 Compatible optional mods:
 - [AdditionalMaps](https://github.com/SFGrenade/AdditionalMaps). Highly recommended with this mod to view White Palace checks
 - [RandomizableLevers](https://github.com/flibber-hk/HollowKnight.RandomizableLevers). Shows lever checks on map
 - [RandoPlus](https://github.com/flibber-hk/HollowKnight.RandoPlus). Shows Mr Mushroom and nail upgrade checks on map
 - Most other mods
-
-This mod has support for languages other than English. You will need to source a `language.json` file and copy it to the `Randomizer 4` directory.
 
 # Screenshots
 <details>
@@ -67,7 +65,7 @@ This mod has support for languages other than English. You will need to source a
     - "Persistent items": Toggle persistent items to always showing or not.
     - "Group by": Toggle the pools to be grouped by location, or by item (spoiler).
 
-## Transition Mode
+## Transition Mode (Not Yet Implemented in AP)
 - Check out the in-game map key (`CTRL-K`) or the [Map Legend](./MAPLEGEND.md) for what the colors/brightness of each room indicate.
 - Hover over a room and press the indicated key/controller bind to find a path.
 - If successful, the path route will be displayed. You can try again to change the start/final transition to what you want.
@@ -86,14 +84,14 @@ This mod has support for languages other than English. You will need to source a
     - Colors will be interpreted in standard RGBA format ``[r, g, b, a]``.
     - If you want to keep the default color of something, delete the corresponding line in the file (or change ``[r, g, b, a]`` to ``[]``).
 - To customize pins, make a folder called 'Pins' containing your custom PNG files, and copy it to the same folder that contains the mod file 'MapModS.dll'. You only need to quit a save and re-enter one to reload the pins.
-    - See the [default pins](./MapModS/Resources/Pins) for reference.
+    - See the [default pins](./APMapMod/Resources/Pins) for reference.
     - You only need to include the files you want to replace the original ones with.
 
 # How To Install
 Use Scarab: https://github.com/fifty-six/Scarab
 
 Or, you can install manually:
-1. Download the latest release of `MapModS.zip`.
+1. Download the latest release of `APMapMod.zip`.
 2. Unzip and copy the folder 'MapModS' to `...\hollow_knight_Data\Managed\Mods`.
 
 If you need any help, feel free to ask in any of the active Hollow Knight Discord servers.
