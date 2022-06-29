@@ -1,0 +1,65 @@
+{
+  "Dream_Guardian_Lurien": {
+    "mapZone": "CITY",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Ruins2_Watcher_Room",
+    "includeWithAdditionalMaps": true
+  },
+  "Dream_Guardian_Monomon": {
+    "mapZone": "CITY",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Fungus3_47",
+    "includeWithAdditionalMaps": true
+  },
+  "Dream_Guardian_Hegemol": {
+    "mapZone": "DEEPNEST",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Deepnest_10",
+    "includeWithAdditionalMaps": true
+  },
+  "Dream_Nailcollection": {
+    "mapZone": "RESTING_GROUNDS",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "RestingGrounds_04",
+    "includeWithAdditionalMaps": true
+  },
+  "RestingGrounds_02_boss": {
+    "mapZone": "RESTING_GROUNDS",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "RestingGrounds_02",
+    "includeWithAdditionalMaps": true
+  },
+  "Dream_Abyss": {
+    "mapZone": "ABYSS",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Abyss_06_Core",
+    "includeWithAdditionalMaps": true
+  },
+  "Cliffs_02_boss": {
+    "mapZone": "CLIFFS",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Cliffs_02",
+    "includeWithAdditionalMaps": true
+  },
+  "Fungus3_40_boss": {
+    "mapZone": "ROYAL_GARDENS",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Fungus3_40",
+    "includeWithAdditionalMaps": true
+  },
+  "Ruins1_24_boss_defeated": {
+    "mapZone": "CITY",
+    "offsetX": 0,
+    "offsetY": 0,
+    "mappedScene": "Ruins1_24",
+    "includeWithAdditionalMaps": true
+  }
+}

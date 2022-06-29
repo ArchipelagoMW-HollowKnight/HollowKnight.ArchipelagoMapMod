@@ -1,0 +1,289 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>APMapMod</RootNamespace>
+    <AssemblyName>APMapMod</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyTitle>Archipelago Map Mod</AssemblyTitle>
+    <Product>APMapMod</Product>
+    <Description>A Hollow Knight mod that works with the Archipelago Multiworld randomizer to put pins on the map for all checks.</Description>
+    <Authors>Kono Tyran</Authors>
+    <AssemblyVersion>0.2.0.*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
+    <LangVersion>latest</LangVersion>
+    <HollowKnightRefs>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
+    <ExportDir>..\..\Exports</ExportDir>
+    <NoWarn>7035</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+	<DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Unused\**" />
+    <EmbeddedResource Remove="Unused\**" />
+    <None Remove="Unused\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Map\MapObjectScript.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Pathfinder\Compass\doorObjectsByScene.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Compass\doorObjectsByTransition.json" />
+    <EmbeddedResource Include="Resources\benchwarp.json" />
+    <EmbeddedResource Include="Resources\Data\rooms.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Data\adjacentScenes.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Data\conditionalTerms.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Data\adjacentTerms.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Data\transitionsByScene.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Data\scenesByTransition.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\benchLogicEdits.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\godhomeLogicSubstitutions.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\logicSubstitutions.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\logicEdits.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\benchWaypoints.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\godhomeTransitions.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\waypoints.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\macros.json" />
+    <EmbeddedResource Include="Resources\Pathfinder\Logic\transitions.json" />
+    <EmbeddedResource Include="Resources\Pins\pinBlank.png" />
+    <EmbeddedResource Include="Resources\Pins\pinBorder.png" />
+    <EmbeddedResource Include="Resources\Pins\pinBorderHexagon.png" />
+    <EmbeddedResource Include="Resources\Pins\pinBorderDiamond.png" />
+    <EmbeddedResource Include="Resources\Pins\pinBorderTriangle.png" />
+    <EmbeddedResource Include="Resources\sortedGroups.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GUI\arrow.png" />
+    <EmbeddedResource Include="Resources\GUI\panelRight.png" />
+    <EmbeddedResource Include="Resources\GUI\panelLeft.png" />
+    <EmbeddedResource Include="Resources\GUI\CompassIcon.png" />
+    <EmbeddedResource Include="Resources\minimalMapRooms.json" />
+    <EmbeddedResource Include="Resources\nonMappedRooms.json" />
+    <EmbeddedResource Include="Resources\pinScenes.json" />
+    <EmbeddedResource Include="Resources\pins.json" />
+    <EmbeddedResource Include="Resources\pinsAM.json" />
+    <EmbeddedResource Include="Resources\Pins\pinAP.png" />
+    <EmbeddedResource Include="Resources\Pins\pinAPUseful.png" />
+    <EmbeddedResource Include="Resources\Pins\pinAPProgression.png" />
+    <EmbeddedResource Include="Resources\Pins\pinBench.png" />
+    <EmbeddedResource Include="Resources\Pins\pinCharm.png" />
+    <EmbeddedResource Include="Resources\Pins\pinCocoon.png" />
+    <EmbeddedResource Include="Resources\Pins\pinDreamer.png" />
+    <EmbeddedResource Include="Resources\Pins\pinEgg.png" />
+    <EmbeddedResource Include="Resources\Pins\pinEssenceBoss.png" />
+    <EmbeddedResource Include="Resources\Pins\pinFlame.png" />
+    <EmbeddedResource Include="Resources\Pins\pinGeo.png" />
+    <EmbeddedResource Include="Resources\Pins\pinGrub.png" />
+    <EmbeddedResource Include="Resources\Pins\pinJournal.png" />
+    <EmbeddedResource Include="Resources\Pins\pinKey.png" />
+    <EmbeddedResource Include="Resources\Pins\pinLever.png" />
+    <EmbeddedResource Include="Resources\Pins\pinLore.png" />
+    <EmbeddedResource Include="Resources\Pins\pinMap.png" />
+    <EmbeddedResource Include="Resources\Pins\pinMask.png" />
+    <EmbeddedResource Include="Resources\Pins\pinMushroom.png" />
+    <EmbeddedResource Include="Resources\Pins\pinNotch.png" />
+    <EmbeddedResource Include="Resources\Pins\pinOre.png" />
+    <EmbeddedResource Include="Resources\Pins\pinRelic.png" />
+    <EmbeddedResource Include="Resources\Pins\pinRock.png" />
+    <EmbeddedResource Include="Resources\Pins\pinRoot.png" />
+    <EmbeddedResource Include="Resources\Pins\pinShop.png" />
+    <EmbeddedResource Include="Resources\Pins\pinSkill.png" />
+    <EmbeddedResource Include="Resources\Pins\pinStag.png" />
+    <EmbeddedResource Include="Resources\Pins\pinTotem.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_GeoRock.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_GeoRockInv.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_Grub.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_GrubInv.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_Lifeblood.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_LifebloodInv.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_Totem.png" />
+    <EmbeddedResource Include="Resources\Pins\pinUnknown_TotemInv.png" />
+    <EmbeddedResource Include="Resources\Pins\pinVessel.png" />
+  </ItemGroup>
+
+	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
+		<RemoveDir Directories="$(ExportDir)/$(TargetName)/" />
+		<MakeDir Directories="$(ExportDir)/$(TargetName)/" />
+		<MakeDir Directories="$(ExportDir)/$(TargetName)/zip/" />
+		<MakeDir Condition="!Exists('$(HollowKnightRefs)/Mods/$(TargetName)/')" Directories="$(HollowKnightRefs)/Mods/$(TargetName)/" />
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)/" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)/$(TargetName)/" />
+		<Copy SourceFiles="../README.md;$(TargetPath);$(TargetDir)/$(TargetName).pdb" DestinationFolder="$(ExportDir)/$(TargetName)/zip/" />
+		<ZipDirectory SourceDirectory="$(ExportDir)/$(TargetName)/zip/" DestinationFile="$(ExportDir)/$(TargetName)/$(TargetName).zip" />
+		<RemoveDir Directories="$(ExportDir)/$(TargetName)/zip/" />
+
+		<GetFileHash Files="$(ExportDir)/$(TargetName)/$(TargetName).zip" Algorithm="SHA256">
+			<Output TaskParameter="Items" ItemName="FilesWithHashes" />
+		</GetFileHash>
+		<WriteLinesToFile File="$(ExportDir)/$(TargetName)/SHA.txt" Lines="@(FilesWithHashes->'%(FileHash)')" Overwrite="true" Encoding="UTF-8" />
+
+		<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+			<Output TaskParameter="Assemblies" ItemName="Targets" />
+		</GetAssemblyIdentity>
+		<ItemGroup>
+			<VersionNumber Include="@(Targets->'%(Version)')" />
+		</ItemGroup>
+		<WriteLinesToFile File="$(ExportDir)/$(TargetName)/version.txt" Lines="@(VersionNumber)" Overwrite="true" Encoding="UTF-8" />
+	</Target>
+
+    <ItemGroup>
+      <PackageReference Include="Archipelago.MultiClient.Net" Version="3.0.1" />
+      <Reference Include="Assembly-CSharp">
+        <HintPath>$(HollowKnightRefs)\Assembly-CSharp.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="BenchRando">
+        <HintPath>$(HollowKnightRefs)\Mods\BenchRando\BenchRando.dll</HintPath>
+      </Reference>
+      <Reference Include="Benchwarp">
+        <HintPath>$(HollowKnightRefs)\Mods\Benchwarp\Benchwarp.dll</HintPath>
+      </Reference>
+      <Reference Include="ItemChanger">
+        <HintPath>$(HollowKnightRefs)\Mods\ItemChanger\ItemChanger.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="Archipelago.HollowKnight">
+        <HintPath>$(HollowKnightRefs)\Mods\Archipelago\Archipelago.HollowKnight.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="MagicUI">
+        <HintPath>$(HollowKnightRefs)\Mods\MagicUI\MagicUI.dll</HintPath>
+      </Reference>
+      <Reference Include="MenuChanger">
+        <HintPath>$(HollowKnightRefs)\Mods\MenuChanger\MenuChanger.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="MMHOOK_Assembly-CSharp">
+        <HintPath>$(HollowKnightRefs)\MMHOOK_Assembly-CSharp.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="MMHOOK_PlayMaker">
+        <HintPath>$(HollowKnightRefs)\MMHOOK_PlayMaker.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="Mono.Cecil">
+        <HintPath>$(HollowKnightRefs)\Mono.Cecil.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="MonoMod.RuntimeDetour">
+        <HintPath>$(HollowKnightRefs)\MonoMod.RuntimeDetour.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="MonoMod.Utils">
+        <HintPath>$(HollowKnightRefs)\MonoMod.Utils.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="Newtonsoft.Json">
+        <HintPath>$(HollowKnightRefs)\Newtonsoft.Json.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="PlayMaker">
+        <HintPath>$(HollowKnightRefs)\PlayMaker.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.CoreModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.ImageConversionModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.ImageConversionModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.InputLegacyModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.InputLegacyModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.TextCoreModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.TextCoreModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.TextRenderingModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.TextRenderingModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.UI.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="UnityEngine.UIModule">
+        <HintPath>$(HollowKnightRefs)\UnityEngine.UIModule.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="Vasi">
+        <HintPath>$(HollowKnightRefs)\Mods\Vasi\Vasi.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Include="Satchel">
+        <HintPath>$(HollowKnightRefs)\Mods\Satchel\Satchel.dll</HintPath>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Update="System">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Core">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Data">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Drawing">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.IO.Compression.FileSystem">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Numerics">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Runtime.Serialization">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Xml">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+      <Reference Update="System.Xml.Linq">
+        <Private>false</Private>
+        <CopyLocal>False</CopyLocal>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Archipelago.MultiClient.Net" Version="3.1.0" />
+    </ItemGroup>
+
+</Project>
