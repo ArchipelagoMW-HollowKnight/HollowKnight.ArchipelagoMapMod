@@ -9,7 +9,7 @@ public struct RoomDef
     public string TitledArea;
 }
 
-public class Data
+public static class Data
 {
     // Trimmed down file from Homothetyhk's rando 4 mod https://github.com/homothetyhk/RandomizerMod/blob/master/RandomizerMod/RandomizerData/Data.cs
     
@@ -37,7 +37,6 @@ public class Data
     }
 
     #endregion
-
     
     public static void Load()
     {

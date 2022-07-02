@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using APMapMod.Data;
+using APMapMod.RC;
 using APMapMod.Settings;
 using GlobalEnums;
 using ItemChanger;
@@ -198,17 +199,17 @@ namespace APMapMod.Map
             }
 
             // Check if reachable
-            // if (RM.RS.TrackerData.uncheckedReachableLocations.Contains(pd.name))
-            // {
-            //     if (RM.RS.TrackerDataWithoutSequenceBreaks.uncheckedReachableLocations.Contains(pd.name))
-            //     {
-            //         pd.pinLocationState = PinLocationState.UncheckedReachable;
-            //     }
-            //     else
-            //     {
-            //         pd.pinLocationState = PinLocationState.OutOfLogicReachable;
-            //     }
-            // }
+            if (APMapMod.LS.tracker.uncheckedReachableLocations.Contains(pd.name))
+            {
+                if (APMapMod.LS.trackerWithoutSequenceBreaks.uncheckedReachableLocations.Contains(pd.name))
+                {
+                     pd.pinLocationState = PinLocationState.UncheckedReachable;
+                }
+                else
+                {
+                   pd.pinLocationState = PinLocationState.OutOfLogicReachable;
+                }
+            }
 
             // Check if previewed
             if (pd.placement.Visited.HasFlag(VisitState.Previewed))
@@ -220,6 +221,12 @@ namespace APMapMod.Map
             if (pd.randoItems == null || !pd.randoItems.Any())
             {
                 pd.pinLocationState = PinLocationState.Cleared;
+            }
+            
+            //check if clearedPersistant
+            if (pd.randoItems != null && pd.randoItems.Any(item => item.item.IsPersistent() && item.item.WasEverObtained()))
+            {
+                pd.pinLocationState = PinLocationState.ClearedPersistent;
             }
         }
 

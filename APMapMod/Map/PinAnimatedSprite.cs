@@ -212,7 +212,7 @@ namespace APMapMod.Map
                 case PinLocationState.ClearedPersistent:
                     if (PD.randoItems.ElementAt(spriteIndex).persistent)
                     {
-                        APMapMod.Instance.LogDebug($"hex border for {PD.name}");
+                        //APMapMod.Instance.LogDebug($"hex border for {PD.name}");
                         BorderSR.sprite = SpriteManager.GetSprite("pinBorderHexagon");
                         BorderSR.color = Colors.GetColor(ColorSetting.Pin_Persistent);
                     }

@@ -49,6 +49,13 @@
     <EmbeddedResource Include="Resources\Pathfinder\Compass\doorObjectsByTransition.json" />
     <EmbeddedResource Include="Resources\benchwarp.json" />
     <EmbeddedResource Include="Resources\Data\rooms.json" />
+    <EmbeddedResource Include="Resources\Data\transitions.json" />
+    <EmbeddedResource Include="Resources\Logic\items.json" />
+    <EmbeddedResource Include="Resources\Logic\locations.json" />
+    <EmbeddedResource Include="Resources\Logic\macros.json" />
+    <EmbeddedResource Include="Resources\Logic\terms.json" />
+    <EmbeddedResource Include="Resources\Logic\transitions.json" />
+    <EmbeddedResource Include="Resources\Logic\waypoints.json" />
     <EmbeddedResource Include="Resources\Pathfinder\Data\adjacentScenes.json" />
     <EmbeddedResource Include="Resources\Pathfinder\Data\conditionalTerms.json" />
     <EmbeddedResource Include="Resources\Pathfinder\Data\adjacentTerms.json" />
@@ -148,6 +155,10 @@
 
     <ItemGroup>
       <PackageReference Include="Archipelago.MultiClient.Net" Version="3.0.1" />
+      <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <Reference Include="Assembly-CSharp">
         <HintPath>$(HollowKnightRefs)\Assembly-CSharp.dll</HintPath>
         <CopyLocal>False</CopyLocal>
@@ -157,6 +168,9 @@
       </Reference>
       <Reference Include="Benchwarp">
         <HintPath>$(HollowKnightRefs)\Mods\Benchwarp\Benchwarp.dll</HintPath>
+      </Reference>
+      <Reference Include="RandomizerCore">
+        <HintPath>$(HollowKnightRefs)\Mods\RandomizerCore\RandomizerCore.dll</HintPath>
       </Reference>
       <Reference Include="ItemChanger">
         <HintPath>$(HollowKnightRefs)\Mods\ItemChanger\ItemChanger.dll</HintPath>

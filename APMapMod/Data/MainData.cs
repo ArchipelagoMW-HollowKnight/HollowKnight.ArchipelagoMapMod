@@ -195,7 +195,7 @@ namespace APMapMod.Data
 
                 // UpdatePins will set it to the correct state
                 pd.pinLocationState = pd.randomized
-                    ? PinLocationState.UncheckedReachable
+                    ? PinLocationState.UncheckedUnreachable
                     : PinLocationState.NonRandomizedUnchecked;
                 pd.locationPoolGroup = placement.GetPlacementGroup();
 
@@ -291,10 +291,10 @@ namespace APMapMod.Data
             }
         }
 
-        // public static void SetLogicLookup()
-        // {
-        //     logicLookup = RM.RS.TrackerData.lm.LogicLookup.Values.ToDictionary(l => l.Name, l => l.ToInfix());
-        // }
+        public static void SetLogicLookup()
+        {
+            logicLookup = APMapMod.LS.Context.LM.LogicLookup.Values.ToDictionary(l => l.Name, l => l.ToInfix());
+        }
 
         public static void Load()
         {
@@ -558,6 +558,7 @@ namespace APMapMod.Data
                 case ItemNames.Lifeblood_Cocoon_Small:
                 case ItemNames.Lifeblood_Cocoon_Large:
                     return "Lifeblood Cocoons";
+                
                 case "Grimmkin_Flame":
                     return "Grimmkin Flames";
                     
@@ -584,6 +585,7 @@ namespace APMapMod.Data
                 case LocationNames.Leg_Eater:
                 case LocationNames.Seer:
                 case LocationNames.Grubfather:
+                case LocationNames.Egg_Shop:
                     return "Shops";
             }
 

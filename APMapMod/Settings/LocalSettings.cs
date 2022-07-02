@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using APMapMod.Data;
+using APMapMod.RC;
+using Newtonsoft.Json;
 
 namespace APMapMod.Settings
 {
@@ -72,7 +74,12 @@ namespace APMapMod.Settings
         public List<SettingPair> poolGroupSettings = new();
         
         public IconVisibility IconVisibility = IconVisibility.Both;
-
+        
+        [JsonIgnore]
+        public APRandoContext Context;
+        public TrackerData tracker;
+        public TrackerData trackerWithoutSequenceBreaks;
+        
         public void ToggleModEnabled()
         {
             modEnabled = !modEnabled;

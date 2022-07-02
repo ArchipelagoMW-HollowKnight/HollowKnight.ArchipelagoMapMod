@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using APMapMod.Data;
+using APMapMod.RC;
 using APMapMod.Settings;
 using APMapMod.Trackers;
 using GlobalEnums;
@@ -19,6 +20,7 @@ namespace APMapMod.Map
 
         public static void Hook()
         {
+            On.HeroController.Start += HeroController_Start;
             On.GameMap.Start += GameMap_Start;
             On.GameManager.SetGameMap += GameManager_SetGameMap;
             On.GameMap.WorldMap += GameMap_WorldMap;
@@ -31,6 +33,7 @@ namespace APMapMod.Map
 
         public static void Unhook()
         {
+            On.HeroController.Start -= HeroController_Start;
             On.GameMap.Start -= GameMap_Start;
             On.GameManager.SetGameMap -= GameManager_SetGameMap;
             On.GameMap.WorldMap -= GameMap_WorldMap;
@@ -39,6 +42,12 @@ namespace APMapMod.Map
             On.GameManager.UpdateGameMap -= GameManager_UpdateGameMap;
             ModHooks.LanguageGetHook -= OnLanguageGetHook;
             On.GameMap.Update -= GameMap_Update;
+        }
+
+        private static void HeroController_Start(On.HeroController.orig_Start orig, HeroController self)
+        {
+            APLogicManager.SetupLogic();
+            orig(self);
         }
 
         // Called every time when a new GameMap is created (once per save load)
@@ -50,7 +59,7 @@ namespace APMapMod.Map
             {
                 Dependencies.BenchwarpVersionCheck();
                 MainData.SetUsedPinDefs();
-                //ainData.SetLogicLookup();
+                MainData.SetLogicLookup();
                 //TransitionData.SetTransitionLookup();
                 //PathfinderData.Load();
                 //Pathfinder.Initialize();

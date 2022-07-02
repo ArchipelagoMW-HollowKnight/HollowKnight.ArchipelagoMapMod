@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading;
 using APMapMod.Data;
 using APMapMod.Map;
 using APMapMod.Settings;
@@ -11,7 +9,6 @@ using APMapMod.Trackers;
 using APMapMod.UI;
 using Archipelago.MultiClient.Net;
 using Modding;
-using UnityEngine;
 
 namespace APMapMod
 {
@@ -87,10 +84,11 @@ namespace APMapMod
         private void Hook()
         {
             Log("Activating mod");
-
+            session = Archipelago.HollowKnight.Archipelago.Instance.session;
+            
             // Load default/custom assets
             SpriteManager.LoadPinSprites();
-            Colors.LoadCustomColors();
+            Colors.LoadCustomColors(); 
             Data.Data.Load();
 
             if (Dependencies.HasBenchwarp())
@@ -129,8 +127,7 @@ namespace APMapMod
             // enable player icon tracking.
             CoOpMap.Hook();
 
-            session = Archipelago.HollowKnight.Archipelago.Instance.session;
-            
+
             Log("Done Activating Mod");
         }
 
