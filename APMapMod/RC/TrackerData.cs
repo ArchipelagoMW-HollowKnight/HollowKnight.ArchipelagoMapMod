@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Archipelago.HollowKnight.IC;
+using Archipelago.HollowKnight.SlotData;
 
 namespace APMapMod.RC;
 
@@ -107,8 +109,49 @@ public class TrackerData
         }
 
         mu.Hook(pm); // automatically handle tracking reachable unobtained locations/transitions and adding vanilla progression to pm
+        pm.Set("ITEMRANDO", 1);
+
+        SlotOptions options = Archipelago.HollowKnight.Archipelago.Instance.SlotOptions;
+        if (options.AcidSkips)
+            pm.Set("ACIDSKIPS", 1);
+        if(options.ComplexSkips)
+            pm.Set("COMPLEXSKIPS", 1);
+        if(options.DamageBoosts)
+            pm.Set("DAMAGEBOOSTS", 1);
+        if(options.DangerousSkips)
+            pm.Set("DANGEROUSSKIPS", 1);
+        if(options.DarkRooms)
+            pm.Set("DARKROOMS", 1);
+        if(options.DifficultSkips)
+            pm.Set("DIFFICULTSKIPS", 1);
+        if(options.EnemyPogos)
+            pm.Set("ENEMYPOGOS", 1);
+        if(options.FireballSkips)
+            pm.Set("FIREBALLSKIPS", 1);
+        if(options.InfectionSkips)
+            pm.Set("INFECTIONSKIPS", 1);
+        if(options.ObscureSkips)
+            pm.Set("OBSCURESKIPS", 1);
+        if(options.PreciseMovement)
+            pm.Set("PRECISEMOVEMENT", 1);
+        if(options.ProficientCombat)
+            pm.Set("PROFICIENTCOMBAT", 1);
+        if(options.RandomizeElevatorPass)
+            pm.Set("RANDOMELEVATORS", 1);
+        if(options.RandomizeFocus)
+            pm.Set("RANDOMFOCUS", 1);
+        if(options.ShadeSkips)
+            pm.Set("SHADESKIPS", 1);
+        if(options.SpikeTunnels)
+            pm.Set("SPIKETUNNELS", 1);
+        if(options.BackgroundObjectPogos)
+            pm.Set("BACKGROUNDPOGOS", 1);
+        if(options.RemoveSpellUpgrades)
+            pm.Set("CURSED", 1);
+        if(options.RandomizeNail)
+            pm.Set("RANDOMNAIL", 1);
+        
         pm.Add(lm.GetTransition("Tutorial_01[right1]")); 
-        // lm.GetItem("ITEMRANDO").AddTo(pm);
     }
 
     private Action<ProgressionManager> OnCanGetLocation(int id)

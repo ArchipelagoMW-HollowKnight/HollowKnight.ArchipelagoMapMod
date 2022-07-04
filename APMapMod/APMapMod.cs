@@ -18,7 +18,7 @@ namespace APMapMod
 
         public bool ToggleButtonInsideMenu { get; }
         
-        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString();
+        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString() + "-LT";
 
         public override int LoadPriority() => 10;
 
@@ -31,6 +31,8 @@ namespace APMapMod
         public GlobalSettings OnSaveGlobal() => GS;
 
         public ArchipelagoSession session;
+
+        private bool _enabled;
 
         public override void Initialize()
         {
@@ -57,10 +59,9 @@ namespace APMapMod
                 }
             }
 
-            GUIController.Setup();
-            
             try
             {
+                GUIController.Setup();
                 MainData.Load();
             }
             catch (Exception e)
@@ -77,7 +78,8 @@ namespace APMapMod
                 // default value lets randomize it!
                 GS.IconColor= Utils.GetRandomLightColor();
             }
-            
+
+            _enabled = true;
             Log("Initialization complete.");
         }
 
@@ -127,7 +129,6 @@ namespace APMapMod
             // enable player icon tracking.
             CoOpMap.Hook();
 
-
             Log("Done Activating Mod");
         }
 
@@ -147,7 +148,7 @@ namespace APMapMod
         
         public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
         {
-            return BetterMenu.GetMenuScreen(modListMenu, toggleDelegates);
+            return _enabled ? default : BetterMenu.GetMenuScreen(modListMenu, toggleDelegates);
         }
     }
 }

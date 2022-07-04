@@ -163,9 +163,6 @@
         <HintPath>$(HollowKnightRefs)\Assembly-CSharp.dll</HintPath>
         <CopyLocal>False</CopyLocal>
       </Reference>
-      <Reference Include="BenchRando">
-        <HintPath>$(HollowKnightRefs)\Mods\BenchRando\BenchRando.dll</HintPath>
-      </Reference>
       <Reference Include="Benchwarp">
         <HintPath>$(HollowKnightRefs)\Mods\Benchwarp\Benchwarp.dll</HintPath>
       </Reference>

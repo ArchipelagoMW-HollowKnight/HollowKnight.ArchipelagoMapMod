@@ -46,7 +46,18 @@ namespace APMapMod.Map
 
         private static void HeroController_Start(On.HeroController.orig_Start orig, HeroController self)
         {
-            APLogicManager.SetupLogic();
+            
+            try
+            {
+                APMapMod.Instance.Log("Setting up internal Logic.");
+                APLogicManager.SetupLogic();
+                APMapMod.Instance.Log("Logic Setup Complete.");
+            }
+            catch (Exception e)
+            {
+                APMapMod.Instance.LogError($"Error Setting up logic\n{e}");
+            }
+
             orig(self);
         }
 

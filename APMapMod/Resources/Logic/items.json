@@ -2390,21 +2390,21 @@
     "Name": "Elevator_Pass"
   },
   {
-    "$type": "RandomizerMod.RC.SplitCloakItem, RandomizerMod",
+    "$type": "APMapMod.RC.SplitCloakItem, APMapMod",
     "LeftBiased": true,
     "LeftDashTerm": "LEFTDASH",
     "RightDashTerm": "RIGHTDASH",
     "Name": "Left_Mothwing_Cloak"
   },
   {
-    "$type": "RandomizerMod.RC.SplitCloakItem, RandomizerMod",
+    "$type": "APMapMod.RC.SplitCloakItem, APMapMod",
     "LeftBiased": false,
     "LeftDashTerm": "LEFTDASH",
     "RightDashTerm": "RIGHTDASH",
     "Name": "Right_Mothwing_Cloak"
   },
   {
-    "$type": "RandomizerMod.RC.SplitCloakItem, RandomizerMod",
+    "$type": "APMapMod.RC.SplitCloakItem, APMapMod",
     "LeftBiased": true,
     "LeftDashTerm": "LEFTDASH",
     "RightDashTerm": "RIGHTDASH",

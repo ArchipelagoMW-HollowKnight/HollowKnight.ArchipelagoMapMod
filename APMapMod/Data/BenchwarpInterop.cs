@@ -26,7 +26,7 @@ namespace APMapMod.Data
 
             if (Dependencies.HasBenchRando() && IsBenchRandoEnabled())
             {
-                benchTransitions = BenchRandoInterop.GetBenchTransitions();
+                //benchTransitions = BenchRandoInterop.GetBenchTransitions();
             }
             else
             {

@@ -49,7 +49,7 @@ namespace APMapMod.Data
 
         public static string ToCleanPreviewText(string text)
         {
-            return text.Replace("Pay ", "")
+            return text?.Replace("Pay ", "")
                 .Replace("Once you own ", "")
                 .Replace(", I'll gladly sell it to you.", "")
                 .Replace("Requires ", "")

@@ -79,7 +79,7 @@ public class NotchCostInt : LogicInt
             notchCosts.Add(PlayerData.instance.GetInt($"charmCost_{i}"));
         }
         
-        if (notchCosts.Count >= charmIDs[charmIDs.Length - 1])
+        if (notchCosts != null && notchCosts.Count >= charmIDs[charmIDs.Length - 1])
         {
             return charmIDs.Sum(i => notchCosts[i - 1]) - charmIDs.Max(i => notchCosts[i - 1]);
         }

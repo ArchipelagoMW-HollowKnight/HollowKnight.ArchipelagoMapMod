@@ -1,7 +1,6 @@
-﻿using APMapMod.RC;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace RandomizerMod.RandomizerData
+namespace APMapMod.RC.RandomizerData
 {
     public record LocationDef
     {

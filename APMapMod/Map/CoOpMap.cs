@@ -65,9 +65,6 @@ namespace APMapMod.Map {
         /// </summary>
         private bool _sendNewPos;
 
-        public static bool white_palace = false;
-        public static bool gods_glory = false;
-
         public static void Hook()
         {
             On.GameManager.SetGameMap += GameManager_SetGameMap;
@@ -298,8 +295,8 @@ namespace APMapMod.Map {
             // an area that doesn't shop up on the map
             var currentMapZone = gameManager.GetCurrentMapZone();
             if (currentMapZone.Equals("DREAM_WORLD")
-                || (currentMapZone.Equals("WHITE_PALACE") && !white_palace)
-                || (currentMapZone.Equals("GODS_GLORY") && !gods_glory)) {
+                || (currentMapZone.Equals("WHITE_PALACE") && !Dependencies.HasAdditionalMaps())
+                || (currentMapZone.Equals("GODS_GLORY") && !Dependencies.HasAdditionalMaps())) {
                 return Vector3.zero;
             }
 

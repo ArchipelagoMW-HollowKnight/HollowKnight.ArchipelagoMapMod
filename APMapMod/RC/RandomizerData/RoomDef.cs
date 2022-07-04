@@ -1,4 +1,4 @@
-﻿namespace RandomizerMod.RandomizerData
+﻿namespace APMapMod.RC.RandomizerData
 {
     public record RoomDef
     {
