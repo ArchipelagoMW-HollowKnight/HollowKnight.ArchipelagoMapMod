@@ -1,4 +1,5 @@
 ﻿using ItemChanger;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace APMapMod.UI
@@ -82,7 +83,7 @@ namespace APMapMod.UI
             GUIController.Instance.StartScripts();
         }
 
-        private static void GameManager_SetGameMap(On.GameManager.orig_SetGameMap orig, GameManager self, UnityEngine.GameObject go_gameMap)
+        private static void GameManager_SetGameMap(On.GameManager.orig_SetGameMap orig, GameManager self, GameObject go_gameMap)
         {
             orig(self, go_gameMap);
 

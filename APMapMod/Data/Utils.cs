@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GlobalEnums;
+using InControl;
 using UnityEngine;
 using Random = System.Random;
 
@@ -164,13 +165,13 @@ namespace APMapMod.Data
             return Math.Pow(transform.position.x, 2) + Math.Pow(transform.position.y, 2);
         }
 
-        public static string GetBindingsText(List<InControl.BindingSource> bindings)
+        public static string GetBindingsText(List<BindingSource> bindings)
         {
             string text = "";
 
             text += $"[{bindings.First().Name}]";
 
-            if (bindings.Count > 1 && bindings[1].BindingSourceType == InControl.BindingSourceType.DeviceBindingSource)
+            if (bindings.Count > 1 && bindings[1].BindingSourceType == BindingSourceType.DeviceBindingSource)
             {
                 text += $" or ";
 

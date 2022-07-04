@@ -4,7 +4,9 @@ using Archipelago.HollowKnight;
 using Archipelago.HollowKnight.IC;
 using GlobalEnums;
 using ItemChanger;
+using ItemChanger.Internal;
 using ItemChanger.Placements;
+using ItemChanger.Tags;
 
 namespace APMapMod.Data
 {
@@ -99,24 +101,24 @@ namespace APMapMod.Data
 
         public static bool IsPersistent(this AbstractItem item)
         {
-            return item.HasTag<ItemChanger.Tags.PersistentItemTag>();
+            return item.HasTag<PersistentItemTag>();
         }
 
         public static bool CanPreviewItem(this AbstractPlacement placement)
         {
-            return !placement.HasTag<ItemChanger.Tags.DisableItemPreviewTag>();
+            return !placement.HasTag<DisableItemPreviewTag>();
         }
 
         public static string[] GetPreviewText(string abstractPlacementName)
         {
-            if (!ItemChanger.Internal.Ref.Settings.Placements.TryGetValue(abstractPlacementName, out AbstractPlacement placement)) return default;
+            if (!Ref.Settings.Placements.TryGetValue(abstractPlacementName, out AbstractPlacement placement)) return default;
 
-            if (placement.GetTag(out ItemChanger.Tags.MultiPreviewRecordTag multiTag))
+            if (placement.GetTag(out MultiPreviewRecordTag multiTag))
             {
                 return multiTag.previewTexts;
             }
 
-            if (placement.GetTag(out ItemChanger.Tags.PreviewRecordTag tag))
+            if (placement.GetTag(out PreviewRecordTag tag))
             {
                 return new[] { tag.previewText };
             }
@@ -149,7 +151,7 @@ namespace APMapMod.Data
             HashSet<string> unsortedGroups = new();
 
             // Randomized placements
-            foreach (AbstractPlacement placement in ItemChanger.Internal.Ref.Settings.Placements.Values)
+            foreach (AbstractPlacement placement in Ref.Settings.Placements.Values)
             {
                 if (placement.Items.Any(i => !i.HasTag<ArchipelagoItemTag>())) continue;
                 IEnumerable<ItemDef> items = placement.Items

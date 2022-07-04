@@ -1,9 +1,8 @@
-using System;
 using Archipelago.HollowKnight.IC;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Packets;
 using ItemChanger;
-using ItemChanger.Placements;
+using ItemChanger.Internal;
 
 namespace APMapMod.Trackers;
 
@@ -50,7 +49,7 @@ public class HintTracker
             item = int.Parse(split[split.Length-1]) - 1;
         }
         
-        var placement = ItemChanger.Internal.Ref.Settings.Placements[location];
+        var placement = Ref.Settings.Placements[location];
         if (placement == null) return;
         
         placement.Items[item].GetTag<ArchipelagoItemTag>().Hinted = true;

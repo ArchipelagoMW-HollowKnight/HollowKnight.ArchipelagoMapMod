@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Archipelago.HollowKnight.IC;
 using ItemChanger;
+using ItemChanger.Internal;
 using RandomizerCore;
-using RandomizerCore.Logic;
 
 namespace APMapMod.RC;
 
@@ -35,7 +34,7 @@ public static class APLogicManager
         // items to the "start" later
         var externalItems = Finder.ItemNames.ToList();
         APMapMod.LS.Context.itemPlacements ??= new List<ItemPlacement>();
-        var sortedPlacements = ItemChanger.Internal.Ref.Settings.Placements.ToList().OrderBy(p => p.Value.GetTag<APMapPlacementTag>()?.id);
+        var sortedPlacements = Ref.Settings.Placements.ToList().OrderBy(p => p.Value.GetTag<APMapPlacementTag>()?.id);
         var index = 0;
         foreach (var entry in sortedPlacements)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -54,7 +55,7 @@ namespace APMapMod.UI
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         IEnumerator UpdateSelectedScene()
         {
             while (true)
@@ -64,7 +65,7 @@ namespace APMapMod.UI
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         IEnumerator UpdateSelectedPin()
         {
             while (true)
@@ -74,7 +75,7 @@ namespace APMapMod.UI
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         IEnumerator UpdateSelectedBench()
         {
             while (true)

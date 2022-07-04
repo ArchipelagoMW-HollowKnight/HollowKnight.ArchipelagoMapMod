@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace APMapMod.Data
+﻿namespace APMapMod.Data
 {
     // public static class Pathfinder
     // {

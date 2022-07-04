@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Archipelago.HollowKnight.IC;
 using ItemChanger;
+using ItemChanger.Modules;
 
 namespace APMapMod.RC;
 
-    public class TrackerUpdate : ItemChanger.Modules.Module
+    public class TrackerUpdate : Module
     {
         public override void Initialize()
         {

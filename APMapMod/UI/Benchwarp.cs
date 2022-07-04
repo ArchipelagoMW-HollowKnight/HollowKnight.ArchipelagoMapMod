@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using APMapMod.Data;
 using APMapMod.Map;
+using InControl;
 using MagicUI.Core;
 using MagicUI.Elements;
 using UnityEngine;
@@ -77,7 +78,7 @@ namespace APMapMod.UI
 
             if (Dependencies.HasBenchwarp() && selectedBenchScene != "")
             {
-                List<InControl.BindingSource> bindings = new(InputHandler.Instance.inputActions.attack.Bindings);
+                List<BindingSource> bindings = new(InputHandler.Instance.inputActions.attack.Bindings);
 
                 text += $"Hold ";
 

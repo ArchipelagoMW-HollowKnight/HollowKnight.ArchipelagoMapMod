@@ -1,4 +1,3 @@
-using APMapMod.Util;
 using Modding;
 using Satchel;
 using Satchel.BetterMenus;

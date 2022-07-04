@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Archipelago.HollowKnight.IC;
 using Archipelago.HollowKnight.SlotData;
-
-namespace APMapMod.RC;
-
 using Newtonsoft.Json;
 using RandomizerCore;
 using RandomizerCore.Logic;
+
+namespace APMapMod.RC;
 
 // class for storing data related to seed progress
 // updating handled through IC.TrackerUpdate

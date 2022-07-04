@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using APMapMod.Data;
+﻿using APMapMod.Data;
 using APMapMod.Settings;
-using Modding.Utils;
 using UnityEngine;
 using SM = UnityEngine.SceneManagement.SceneManager;
 

@@ -430,7 +430,7 @@ namespace APMapMod.Map {
             // will just create a new map icon
             var transform = mapObject.transform;
             if (transform == null) {
-                Object.Destroy(mapObject);
+                Destroy(mapObject);
                 _mapIcons.Remove(id);
                 return;
             }
@@ -547,7 +547,7 @@ namespace APMapMod.Map {
             }
 
             // Destroy the player icon and then remove it from the list
-            Object.Destroy(playerIcon);
+            Destroy(playerIcon);
             _mapIcons.Remove(id);
         }
 
@@ -557,7 +557,7 @@ namespace APMapMod.Map {
         public void RemoveAllIcons() {
             // Destroy all existing map icons
             foreach (var mapIcon in _mapIcons.GetCopy().Values) {
-                Object.Destroy(mapIcon);
+                Destroy(mapIcon);
             }
 
             // Clear the mapping

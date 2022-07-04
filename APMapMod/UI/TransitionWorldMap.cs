@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using APMapMod.Data;
+using InControl;
 using MagicUI.Core;
 using MagicUI.Elements;
 
@@ -56,7 +57,7 @@ namespace APMapMod.UI
                 text += $"Selected room: {InfoPanels.selectedScene}.";
             }
 
-            List<InControl.BindingSource> bindings = new(InputHandler.Instance.inputActions.menuSubmit.Bindings);
+            List<BindingSource> bindings = new(InputHandler.Instance.inputActions.menuSubmit.Bindings);
 
             if (InfoPanels.selectedScene == Utils.CurrentScene())
             {

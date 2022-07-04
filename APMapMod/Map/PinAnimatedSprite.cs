@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using APMapMod.Data;
 using APMapMod.Settings;
@@ -30,7 +31,7 @@ namespace APMapMod.Map
             _origColor = SR.color;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         private void OnEnable()
         {
             if (gameObject.activeSelf
@@ -42,7 +43,7 @@ namespace APMapMod.Map
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         private void OnDisable()
         {
             if (!gameObject.activeSelf)
@@ -51,7 +52,7 @@ namespace APMapMod.Map
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
+        [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Member is actually used")]
         private IEnumerator CycleSprite()
         {
             while (true)

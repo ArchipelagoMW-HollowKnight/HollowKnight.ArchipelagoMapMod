@@ -8,6 +8,7 @@ using APMapMod.Trackers;
 using GlobalEnums;
 using Modding;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace APMapMod.Map
 {
@@ -110,7 +111,7 @@ namespace APMapMod.Map
             if (goCustomPins != null)
             {
                 goCustomPins.GetComponent<PinsCustom>().DestroyPins();
-                UnityEngine.Object.Destroy(goCustomPins);
+                Object.Destroy(goCustomPins);
             }
 
             APMapMod.Instance.Log("Adding Custom Pins...");

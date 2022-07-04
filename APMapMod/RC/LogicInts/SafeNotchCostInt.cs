@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ItemChanger;
-using ItemChanger.Modules;
 using RandomizerCore.Logic;
 
 namespace APMapMod.RC.LogicInts;
