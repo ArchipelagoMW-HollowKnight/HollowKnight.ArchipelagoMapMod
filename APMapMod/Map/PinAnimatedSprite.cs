@@ -163,7 +163,7 @@ namespace APMapMod.Map
         
         private void SetBorderColor(bool highlightOverride)
         {
-            if (PD.randoItems.Any())
+            if (PD.randoItems != null && PD.randoItems.Any())
             {
                 if (PD.randoItems.ElementAt(spriteIndex).item.GetTag(out ArchipelagoItemTag tag))
                 {
@@ -211,12 +211,9 @@ namespace APMapMod.Map
                     BorderSR.color = Colors.GetColor(ColorSetting.Pin_Previewed);
                     break;
                 case PinLocationState.ClearedPersistent:
-                    if (PD.randoItems.ElementAt(spriteIndex).persistent)
-                    {
-                        //APMapMod.Instance.LogDebug($"hex border for {PD.name}");
-                        BorderSR.sprite = SpriteManager.GetSprite("pinBorderHexagon");
-                        BorderSR.color = Colors.GetColor(ColorSetting.Pin_Persistent);
-                    }
+                    //APMapMod.Instance.LogDebug($"hex border for {PD.name}");
+                    BorderSR.sprite = SpriteManager.GetSprite("pinBorderHexagon");
+                    BorderSR.color = Colors.GetColor(ColorSetting.Pin_Persistent);
                     break;
                 default:
                     break;

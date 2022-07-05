@@ -18,7 +18,7 @@ namespace APMapMod
 
         public bool ToggleButtonInsideMenu { get; }
         
-        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString() + "-LT";
+        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString() + "-LT5";
 
         public override int LoadPriority() => 10;
 
@@ -85,6 +85,7 @@ namespace APMapMod
 
         private void Hook()
         {
+            _enabled = true;
             Log("Activating mod");
             session = Archipelago.HollowKnight.Archipelago.Instance.session;
             
@@ -148,7 +149,7 @@ namespace APMapMod
         
         public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
         {
-            return _enabled ? default : BetterMenu.GetMenuScreen(modListMenu, toggleDelegates);
+            return _enabled ? BetterMenu.GetMenuScreen(modListMenu, toggleDelegates) : modListMenu;
         }
     }
 }

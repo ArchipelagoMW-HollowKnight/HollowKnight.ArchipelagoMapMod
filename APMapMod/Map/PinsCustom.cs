@@ -216,14 +216,14 @@ namespace APMapMod.Map
                 pd.pinLocationState = PinLocationState.Previewed;
             }
 
+            if (pd.randoItems == null) return;
+
             // Check if cleared
-            if (pd.randoItems == null || !pd.randoItems.Any())
+            if (!pd.randoItems.Any())
             {
                 pd.pinLocationState = PinLocationState.Cleared;
             }
-            
-            //check if clearedPersistant
-            if (pd.randoItems != null && pd.randoItems.Any(item => item.item.IsPersistent() && item.item.WasEverObtained()))
+            else if (pd.randoItems.Any(i => i.persistent && i.item.WasEverObtained()))
             {
                 pd.pinLocationState = PinLocationState.ClearedPersistent;
             }

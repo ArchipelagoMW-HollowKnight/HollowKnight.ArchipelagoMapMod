@@ -12,7 +12,7 @@ namespace APMapMod.RC;
         public override void Initialize()
         {
             APMapMod.Instance.LogDebug("TrackerUpdate Init");
-            AbstractItem.AfterGiveGlobal += AfterRandoItemGive;
+            AbstractItem.AfterGiveGlobal += AfterGiveGlobal;
             //RandoItemTag.AfterRandoItemGive += AfterRandoItemGive;
             //RandoPlacementTag.OnRandoPlacementVisitStateChanged += OnRandoPlacementVisitStateChanged;
             Events.OnTransitionOverride += OnTransitionOverride;
@@ -31,7 +31,7 @@ namespace APMapMod.RC;
         public override void Unload()
         {
             APMapMod.Instance.LogDebug("TrackerUpdate Unload");
-            AbstractItem.AfterGiveGlobal -= AfterRandoItemGive;
+            AbstractItem.AfterGiveGlobal -= AfterGiveGlobal;
             //RandoItemTag.AfterRandoItemGive -= AfterRandoItemGive;
             //RandoPlacementTag.OnRandoPlacementVisitStateChanged -= OnRandoPlacementVisitStateChanged;
             Events.OnTransitionOverride -= OnTransitionOverride;
@@ -65,28 +65,47 @@ namespace APMapMod.RC;
             }
         }
 
-        private void AfterRandoItemGive(ReadOnlyGiveEventArgs args)
+        private void AfterGiveGlobal(ReadOnlyGiveEventArgs args)
         {
+            APMapMod.Instance.LogFine($"pre-item obtained {args.Orig.name}, {args.Placement.Name}");
+
             // dont do anything for other players items.
-            if (args.Orig.GetTag<ArchipelagoItemTag>()?.Player != APMapMod.Instance.session.ConnectionInfo.Slot) return;
-            
-            string itemName = args.Orig.name; // the name of the item that was given (not necessarily the item placed)
-            string placementName = args.Placement.Name;
+            if (args.Orig.GetTag<ArchipelagoItemTag>() != null && args.Orig.GetTag<ArchipelagoItemTag>()?.Player !=
+                APMapMod.Instance.session.ConnectionInfo.Slot) return;
 
             if (args.Orig.GetTag(out ArchipelagoDummyItem _))
                 return;
 
-            var id = args.Orig.GetTag<APMapItemTag>().id;
+            string itemName = args.Orig.name; // the name of the item that was given (not necessarily the item placed)
+            string placementName = args.Placement.Name;
 
-            APMapMod.Instance.LogDebug($"item obtained {id}, {itemName}, {placementName}");
-            OnItemObtained?.Invoke(id, itemName, placementName);
-            
-            if (args.Placement.Items.Any(item => !item.WasEverObtained()))
+            try
             {
-                OnPlacementCleared?.Invoke(placementName);
-            }
+                var id = args.Orig.GetTag<APMapItemTag>()?.id ??
+                         TD.ctx.itemPlacements.FindLastIndex(placement => placement.Item.Name == itemName);
 
-            OnFinishedUpdate?.Invoke();
+
+                APMapMod.Instance.LogDebug($"item obtained {id}, {itemName}, {placementName}");
+                OnItemObtained?.Invoke(id, itemName, placementName);
+
+                foreach (var placementItem in args.Placement.Items)
+                {
+                    APMapMod.Instance.LogFine(
+                        $"i: {placementItem.name} o:{placementItem.IsObtained()} weo:{placementItem.WasEverObtained()}");
+                }
+
+                if (args.Placement.Items.All(item => item.WasEverObtained()))
+                {
+                    APMapMod.Instance.LogFine($"Marking {placementName} as cleared");
+                    OnPlacementCleared?.Invoke(placementName);
+                }
+
+                OnFinishedUpdate?.Invoke();
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         /// <summary>

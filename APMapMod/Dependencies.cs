@@ -13,7 +13,8 @@ namespace APMapMod
             { "MenuChanger", null },
             { "MagicUI", null },
             { "Vasi", null },
-            { "Satchel", null }
+            { "Satchel", null },
+            { "RandomizerCore", null }
         };
 
         public static Dictionary<string, Assembly> optionalDependencies = new()
