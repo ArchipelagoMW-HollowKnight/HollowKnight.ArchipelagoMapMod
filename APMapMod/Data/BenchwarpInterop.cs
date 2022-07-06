@@ -42,7 +42,8 @@ namespace APMapMod.Data
                 }
             }
 
-            (string, string) startKey = new(ItemChanger.Internal.Ref.Settings.Start.SceneName, "ITEMCHANGER_RESPAWN_MARKER");
+            //(string, string) startKey = new(ItemChanger.Internal.Ref.Settings.Start.SceneName, "ITEMCHANGER_RESPAWN_MARKER");
+            (string, string) startKey = new("Tutorial_01", "ITEMCHANGER_RESPAWN_MARKER");
 
             benchTransitions.Add(startKey, "Warp-Start");
 
@@ -56,7 +57,9 @@ namespace APMapMod.Data
                 .GroupBy(b => b.mappedSceneName)
                 .ToDictionary(b => b.First().mappedSceneName, b => b.ToList());
 
-            BenchKey startKey = new(ItemChanger.Internal.Ref.Settings.Start.SceneName, "ITEMCHANGER_RESPAWN_MARKER");
+            //BenchKey startKey = new(ItemChanger.Internal.Ref.Settings.Start.SceneName, "ITEMCHANGER_RESPAWN_MARKER");
+            BenchKey startKey = new("Tutorial_01", "ITEMCHANGER_RESPAWN_MARKER");
+            
             WorldMapBenchDef startDef = new(startKey);
 
             if (benches.ContainsKey(startDef.mappedSceneName))
