@@ -26,7 +26,9 @@ namespace APMapMod.UI
         private Vector3 currentDir;
         private float currentAngle;
 
+#pragma warning disable CS0649
         public List<GameObject> trackedObjects;
+#pragma warning restore CS0649
 
         public static GameObject Create(string name, GameObject entity, Sprite sprite, Color color, float radius, float scale, Func<bool> condition, bool lerp, float lerpDuration)
         {

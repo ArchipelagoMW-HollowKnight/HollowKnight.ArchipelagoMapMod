@@ -93,8 +93,9 @@ namespace APMapMod.UI
 
             route.Text = text;
         }
-
+#pragma warning disable CS0649
         private static Thread searchThread;
+#pragma warning restore CS0649
 
         // Called every frame
         public static void Update()
