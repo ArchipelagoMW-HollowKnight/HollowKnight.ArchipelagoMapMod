@@ -1,4 +1,13 @@
-﻿namespace APMapMod.Data
+//using RandomizerCore.Logic;
+//using RandomizerMod.RC;
+
+using System.Collections.Generic;
+using System.Reflection;
+
+//using RD = RandomizerMod.RandomizerData.Data;
+//using RM = RandomizerMod.RandomizerMod;
+
+namespace APMapMod.Data
 {
     // public static class PathfinderData
     // {
@@ -99,15 +108,34 @@
     //             }
     //         }
     //
+    //         // Set Start Warp
+    //         string[] startTerms = GetStartTerms();
+    //         if (startTerms.Length > 0)
+    //         {
+    //             adjacentScenes["Warp-Start"] = ItemChanger.Internal.Ref.Settings.Start.SceneName;
+    //             adjacentTerms["Warp-Start"] = "Warp-Start";
+    //             lmb.AddWaypoint(new("Warp-Start", "FALSE"));
+    //             foreach (string term in startTerms)
+    //             {
+    //                 lmb.DoLogicEdit(new(term, "ORIG | Warp-Start"));
+    //             }
+    //         }
+    //
     //         lm = new(lmb);
     //
     //         waypointScenes = lm.Waypoints.Where(w => RD.IsRoom(w.Name) || w.Name.IsSpecialRoom()).ToDictionary(w => w.Name, w => w);
+    //     }
     //
-    //         // Set Start Warp
-    //         StartDef start = RD.GetStartDef(RM.RS.GenerationSettings.StartLocationSettings.StartLocation);
-    //
-    //         adjacentScenes["Warp-Start"] = start.SceneName;
-    //         adjacentTerms["Warp-Start"] = start.Transition;
+    //     public static string[] GetStartTerms()
+    //     {
+    //         if (RM.RS.Context.InitialProgression is ProgressionInitializer pi && RM.RS.Context.LM is LogicManager lm)
+    //         {
+    //             return pi.Setters.Concat(pi.Increments)
+    //                         .Where(tv => (lm.TransitionLookup.ContainsKey(tv.Term.Name) || lm.Waypoints.Any(waypoint => waypoint.Name == tv.Term.Name)) && tv.Value > 0)
+    //                         .Select(tv => tv.Term.Name)
+    //                         .ToArray();
+    //         }
+    //         return new string[] { };
     //     }
     //
     //     public static HashSet<string> GetTransitionsInScene(this string scene)
@@ -153,7 +181,7 @@
     //
     //     public static string GetAdjacentTerm(this string transition)
     //     {
-    //         if (transition.IsSpecialTransition())
+    //         if (adjacentTerms.ContainsKey(transition))
     //         {
     //             return adjacentTerms[transition];
     //         }

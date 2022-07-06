@@ -8,10 +8,13 @@
     //
     //     public static void Initialize()
     //     {
-    //         localPm = new(PathfinderData.lm, RM.RS.Context);
+    //         localPm = new(PD.lm, RM.RS.Context);
     //
-    //         // Remove start transition
-    //         localPm.Set(RandomizerMod.RandomizerData.Data.GetStartDef(RM.RS.GenerationSettings.StartLocationSettings.StartLocation).Transition, 0);
+    //         // Remove start terms
+    //         foreach (string term in PD.GetStartTerms())
+    //         {
+    //             localPm.Set(term, 0);
+    //         }
     //     }
     //
     //     public static void UpdateProgression()
@@ -26,7 +29,7 @@
     //         }
     //
     //         // Emulate a transition being possibly available via having the required term
-    //         foreach (KeyValuePair<string, string> pair in PathfinderData.conditionalTerms)
+    //         foreach (KeyValuePair<string, string> pair in PD.conditionalTerms)
     //         {
     //             if (Td.pm.Get(pair.Key) > 0)
     //             {
@@ -67,7 +70,7 @@
     //
     //         //foreach (Term term in localPm.lm.Terms)
     //         //{
-    //         //    APMapMod.Instance.Log(term.Name + ": " + localPm.Get(term));
+    //         //    MapModS.Instance.Log(term.Name + ": " + localPm.Get(term));
     //         //}
     //     }
     //
@@ -99,11 +102,11 @@
     //             if (!reevaluate)
     //             {
     //                 // Avoid terminating on duplicate/redudant new paths
-    //                 if (node.scene == final && !rejectedRoutes.Any(r => r.First() == node.route.First() && r.Last().GetAdjacentTerm() == node.lastAdjacentTransition))
+    //                 if (node.scene == final && !rejectedRoutes.Any(r => r.First() == node.route.First() && r.Last().GetAdjacentTerm() == node.lastAdjacentTerm))
     //                 {
     //                     // No other paths to same final transition with a different starting benchwarp
     //                     if (node.route.First().IsBenchwarpTransition()
-    //                         && rejectedRoutes.Any(r => r.Last().GetAdjacentTerm() == node.lastAdjacentTransition && r.First().IsBenchwarpTransition())) continue;
+    //                         && rejectedRoutes.Any(r => r.Last().GetAdjacentTerm() == node.lastAdjacentTerm && r.First().IsBenchwarpTransition())) continue;
     //
     //                     return node.route;
     //                 }
@@ -111,7 +114,7 @@
     //             else
     //             {
     //                 // If reevaluating, we just check if the final transition is correct
-    //                 if (final != "" && node.lastAdjacentTransition == final)
+    //                 if (final != "" && node.lastAdjacentTerm == final)
     //                 {
     //                     return node.route;
     //                 }
@@ -121,10 +124,10 @@
     //
     //             localPm.StartTemp();
     //
-    //             localPm.Set(node.lastAdjacentTransition, 1);
+    //             localPm.Set(node.lastAdjacentTerm, 1);
     //
     //             // It is important we use all the reachable transitions in the room for correct logic, even if they are unchecked
-    //             candidateReachableTransitions = new(PathfinderData.GetTransitionsInScene(searchScene));
+    //             candidateReachableTransitions = new(PD.GetTransitionsInScene(searchScene));
     //
     //             while (UpdateReachableTransitions(searchScene, candidateReachableTransitions)) { }
     //
@@ -166,7 +169,7 @@
     //                     localPm.Set(transition, 1);
     //                 }
     //                 searchScene = start;
-    //                 candidateReachableTransitions = PathfinderData.GetTransitionsInScene(start);
+    //                 candidateReachableTransitions = PD.GetTransitionsInScene(start);
     //
     //                 while (UpdateReachableTransitions(searchScene, candidateReachableTransitions)) { }
     //             }
@@ -179,7 +182,7 @@
     //                         localPm.Set(start, 1);
     //                     }
     //                     searchScene = start.GetScene();
-    //                     candidateReachableTransitions = PathfinderData.GetTransitionsInScene(start.GetScene());
+    //                     candidateReachableTransitions = PD.GetTransitionsInScene(start.GetScene());
     //
     //                     while (UpdateReachableTransitions(searchScene, candidateReachableTransitions)) { }
     //                 }
@@ -273,7 +276,7 @@
     //         {
     //             this.scene = scene;
     //             this.route = new(route);
-    //             lastAdjacentTransition = lat;
+    //             lastAdjacentTerm = lat;
     //         }
     //
     //         public void PrintRoute()
@@ -285,12 +288,12 @@
     //                 text += " -> " + transition;
     //             }
     //
-    //             APMapMod.Instance.Log(text);
+    //             MapModS.Instance.Log(text);
     //         }
     //
     //         public string scene;
     //         public List<string> route = new();
-    //         public string lastAdjacentTransition;
+    //         public string lastAdjacentTerm;
     //         // The indexes of the routes in rejectedRoutes this node is repeating
     //         public IEnumerable<int> repeatedRoutes;
     //     }
@@ -305,7 +308,7 @@
     //         IEnumerable<string> seedTransitions = TransitionData.GetTransitionsByScene(scene)
     //                     .Where(t => normalTransitionSpace.Contains(t) || localPm.lm.TransitionLookup[t].CanGet(localPm));
     //
-    //         HashSet<string> candidateReachableTransitions = PathfinderData.GetTransitionsInScene(scene);
+    //         HashSet<string> candidateReachableTransitions = PD.GetTransitionsInScene(scene);
     //
     //         localPm.StartTemp();
     //
@@ -342,11 +345,11 @@
     //         foreach (string transition in Td.lm.TransitionLookup.Keys)
     //         {
     //             if (Td.uncheckedReachableTransitions.Contains(transition)
-    //                 || PathfinderData.GetAdjacentTerm(transition) == null) continue;
+    //                 || PD.GetAdjacentTerm(transition) == null) continue;
     //
-    //             string scene = PathfinderData.GetScene(transition);
+    //             string scene = PD.GetScene(transition);
     //
-    //             if (APMapMod.LS.mapMode == Settings.MapMode.TransitionRandoAlt
+    //             if (MapModS.LS.mapMode == Settings.MapMode.TransitionRandoAlt
     //                 && !PlayerData.instance.scenesVisited.Contains(scene)) continue;
     //
     //             if (Td.pm.Get(transition) > 0
@@ -381,7 +384,7 @@
     //             }
     //         }
     //
-    //         if (PathfinderData.TryGetSceneWaypoint(searchScene, out LogicWaypoint waypoint)
+    //         if (PD.TryGetSceneWaypoint(searchScene, out LogicWaypoint waypoint)
     //             && !localPm.Has(waypoint.term) && waypoint.CanGet(localPm))
     //         {
     //             localPm.Add(waypoint);
