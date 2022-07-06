@@ -4,7 +4,7 @@
 
 Archipelago Map Mod is a Hollow Knight mod used with Archipelago Multiworld Randomizer. It helps to find both item and transition checks.
 
-This fork of [Phenomenol](https://github.com/syyePhenomenol)'s [fork](https://github.com/syyePhenomenol/HollowKnight.MapModS) of CaptainDapper's original mod has been expanded on with many more features and bug fixes.
+This is a fork of [Phenomenol's fork](https://github.com/syyePhenomenol/HollowKnight.MapModS) of CaptainDapper's original mod has been expanded on with many more features and bug fixes.
 
 Dependencies:
 - [Archipleago.HollowKnight](https://github.com/homothetyhk/RandomizerMod) and all of its dependencies.
@@ -49,7 +49,7 @@ Compatible optional mods:
 
 ## Pause Menu
 - "Mod Enabled/Disabled" `CTRL-M`: Toggle the mod on/off
-- "Spoilers" `CTRL-1`: Toggle pins between vanilla (non-spoiler) and spoiler item pools. For most gameplay, leave this setting off.
+- "Player Icons" `CTRL-1`: Toggle showing other players with APMapMod in the current MW on your map.
 - "Randomized" `CTRL-2`: Toggle all pins for randomized items on/off
 - "Others" `CTRL-3`: Toggle all pins for non-randomized items on/off
 - "Pin Style" `CTRL-4`: Toggle the style of the pins
@@ -100,6 +100,6 @@ If you need any help, feel free to ask in any of the active Hollow Knight Discor
 - Special thanks to Homothety and Flib for significant coding help
 - CaptainDapper for making the original mod
 - PimpasPimpinela for helping to port the mod from Rando 3 to Rando 4
-- Chaktis, KingKiller39 and Ender Onryo for helping with sprite art
+- Chaktis, KingKiller39, Ender Onryo, and Snow for helping with sprite art
 - ColetteMSLP for testing out the mod during livestreams
 - BadMagic for CMICore/MagicUI and help with the UI migration

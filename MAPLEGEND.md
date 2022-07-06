@@ -1,71 +1,72 @@
-# MapModS Legend
+# APMapMod Legend
 <table>
 <tr><th>Style: Normal</th><th>Style: Q Marks 1</th><th>Style: Q Marks 2</th><th>Style: Q Marks 3</th><th>Borders</th><th>Transition Mode Rooms</th></tr>
 <tr valign=top><td>
 
 |Pin|Pool|
 |--|--|
-|![](./MapModS/Resources/Pins/pinDreamer.png)|Dreamers|
-|![](./MapModS/Resources/Pins/pinSkill.png)|Skills|
-|![](./MapModS/Resources/Pins/pinCharm.png)|Charms|
-|![](./MapModS/Resources/Pins/pinKey.png)|Keys|
-|![](./MapModS/Resources/Pins/pinMask.png)|Mask Shards|
-|![](./MapModS/Resources/Pins/pinVessel.png)|Vessel Fragments|
-|![](./MapModS/Resources/Pins/pinNotch.png)|Charm Notches|
-|![](./MapModS/Resources/Pins/pinOre.png)|Pale Ore|
-|![](./MapModS/Resources/Pins/pinGeo.png)|Geo Chests and Boss Geo|
-|![](./MapModS/Resources/Pins/pinEgg.png)|Rancid Eggs|
-|![](./MapModS/Resources/Pins/pinRelic.png)|Relics|
-|![](./MapModS/Resources/Pins/pinRoot.png)|Whispering Roots|
-|![](./MapModS/Resources/Pins/pinEssenceBoss.png)|Boss Essence|
-|![](./MapModS/Resources/Pins/pinGrub.png)|Grubs and Mimics|
-|![](./MapModS/Resources/Pins/pinMap.png)|Maps|
-|![](./MapModS/Resources/Pins/pinStag.png)|Stags|
-|![](./MapModS/Resources/Pins/pinCocoon.png)|Lifeblood Cocoons|
-|![](./MapModS/Resources/Pins/pinFlame.png)|Grimmkin Flames|
-|![](./MapModS/Resources/Pins/pinLore.png)|Journal Entries and Lore Tablets|
-|![](./MapModS/Resources/Pins/pinRock.png)|Geo Rocks|
-|![](./MapModS/Resources/Pins/pinTotem.png)|Soul Totems|
-|![](./MapModS/Resources/Pins/pinShop.png)|Shops|
-|![](./MapModS/Resources/Pins/pinLever.png)|Levers|
+|![](./APMapMod/Resources/Pins/pinDreamer.png)|Dreamers|
+|![](./APMapMod/Resources/Pins/pinSkill.png)|Skills|
+|![](./APMapMod/Resources/Pins/pinCharm.png)|Charms|
+|![](./APMapMod/Resources/Pins/pinKey.png)|Keys|
+|![](./APMapMod/Resources/Pins/pinMask.png)|Mask Shards|
+|![](./APMapMod/Resources/Pins/pinVessel.png)|Vessel Fragments|
+|![](./APMapMod/Resources/Pins/pinNotch.png)|Charm Notches|
+|![](./APMapMod/Resources/Pins/pinOre.png)|Pale Ore|
+|![](./APMapMod/Resources/Pins/pinGeo.png)|Geo Chests and Boss Geo|
+|![](./APMapMod/Resources/Pins/pinEgg.png)|Rancid Eggs|
+|![](./APMapMod/Resources/Pins/pinRelic.png)|Relics|
+|![](./APMapMod/Resources/Pins/pinRoot.png)|Whispering Roots|
+|![](./APMapMod/Resources/Pins/pinEssenceBoss.png)|Boss Essence|
+|![](./APMapMod/Resources/Pins/pinGrub.png)|Grubs and Mimics|
+|![](./APMapMod/Resources/Pins/pinMap.png)|Maps|
+|![](./APMapMod/Resources/Pins/pinStag.png)|Stags|
+|![](./APMapMod/Resources/Pins/pinCocoon.png)|Lifeblood Cocoons|
+|![](./APMapMod/Resources/Pins/pinFlame.png)|Grimmkin Flames|
+|![](./APMapMod/Resources/Pins/pinLore.png)|Lore Tablets|
+|![](./APMapMod/Resources/Pins/pinJournal.png)|Journal Entries|
+|![](./APMapMod/Resources/Pins/pinRock.png)|Geo Rocks|
+|![](./APMapMod/Resources/Pins/pinTotem.png)|Soul Totems|
+|![](./APMapMod/Resources/Pins/pinShop.png)|Shops|
+|![](./APMapMod/Resources/Pins/pinLever.png)|Levers|
   
 </td><td>
 
 |Pin|Pool|
 |--|--|
-|![](./MapModS/Resources/Pins/pinShop.png)|Shops|
-|![](./MapModS/Resources/Pins/pinUnknown.png)|Everything else|
+|![](./APMapMod/Resources/Pins/pinShop.png)|Shops|
+|![](./APMapMod/Resources/Pins/pinUnknown.png)|Everything else|
   
 </td><td>
 
 |Pin|Pool|
 |--|--|
-|![](./MapModS/Resources/Pins/pinUnknown_GrubInv.png)|Grubs and Mimics|
-|![](./MapModS/Resources/Pins/pinUnknown_LifebloodInv.png)|Lifeblood Cocoons|
-|![](./MapModS/Resources/Pins/pinUnknown_GeoRockInv.png)|Geo Rocks|
-|![](./MapModS/Resources/Pins/pinUnknown_TotemInv.png)|Soul Totems|
-|![](./MapModS/Resources/Pins/pinShop.png)|Shops|
-|![](./MapModS/Resources/Pins/pinUnknown.png)|Everything else|
+|![](./APMapMod/Resources/Pins/pinUnknown_GrubInv.png)|Grubs and Mimics|
+|![](./APMapMod/Resources/Pins/pinUnknown_LifebloodInv.png)|Lifeblood Cocoons|
+|![](./APMapMod/Resources/Pins/pinUnknown_GeoRockInv.png)|Geo Rocks|
+|![](./APMapMod/Resources/Pins/pinUnknown_TotemInv.png)|Soul Totems|
+|![](./APMapMod/Resources/Pins/pinShop.png)|Shops|
+|![](./APMapMod/Resources/Pins/pinUnknown.png)|Everything else|
   
 </td><td>
   
 |Pin|Pool|
 |--|--|
-|![](./MapModS/Resources/Pins/pinUnknown_Grub.png)|Grubs and Mimics|
-|![](./MapModS/Resources/Pins/pinUnknown_Lifeblood.png)|Lifeblood Cocoons|
-|![](./MapModS/Resources/Pins/pinUnknown_GeoRock.png)|Geo Rocks|
-|![](./MapModS/Resources/Pins/pinUnknown_Totem.png)|Soul Totems|
-|![](./MapModS/Resources/Pins/pinShop.png)|Shops|
-|![](./MapModS/Resources/Pins/pinUnknown.png)|Everything else|
+|![](./APMapMod/Resources/Pins/pinUnknown_Grub.png)|Grubs and Mimics|
+|![](./APMapMod/Resources/Pins/pinUnknown_Lifeblood.png)|Lifeblood Cocoons|
+|![](./APMapMod/Resources/Pins/pinUnknown_GeoRock.png)|Geo Rocks|
+|![](./APMapMod/Resources/Pins/pinUnknown_Totem.png)|Soul Totems|
+|![](./APMapMod/Resources/Pins/pinShop.png)|Shops|
+|![](./APMapMod/Resources/Pins/pinUnknown.png)|Everything else|
   
 </td><td>
   
 |Color|Meaning|
 |--|--|
-|![](./MapModS/Resources/Pins/pinBlank.png)|Normal|
-|![](./MapModS/Resources/Pins/pinBlankGreen.png)|Previewed|
-|![](./MapModS/Resources/Pins/pinBlankCyan.png)|Persistent|
-|![](./MapModS/Resources/Pins/pinBlankRed.png)|Reachable by sequence break|
+|![](./APMapMod/Resources/Pins/pinBorder.png)|Normal - white|
+|![](./APMapMod/Resources/Pins/pinBorderDiamond.png)|Previewed - green|
+|![](./APMapMod/Resources/Pins/pinBorderHexagon.png)|Persistent - cyan|
+|![](./APMapMod/Resources/Pins/pinBorder.png)|Reachable by sequence break - red|
   
 </td><td>
 
