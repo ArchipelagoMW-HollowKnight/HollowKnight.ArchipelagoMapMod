@@ -181,6 +181,7 @@ namespace APMapMod.Map
             //     return;
             // }
 
+            bool hasUnobtainedItems = false;
             // Remove obtained rando items from list
             if (pd.randoItems != null && pd.randoItems.Any())
             {
@@ -188,7 +189,12 @@ namespace APMapMod.Map
 
                 foreach (ItemDef item in pd.randoItems)
                 {
-                    if (!item.item.IsObtained() || item.item.IsPersistent())
+                    if (!item.item.WasEverObtained())
+                    {
+                        hasUnobtainedItems = true;
+                    }
+
+                    if (!item.item.WasEverObtained() || item.item.IsPersistent())
                     {
                         newRandoItems.Add(item);
                     }
@@ -220,6 +226,10 @@ namespace APMapMod.Map
             if (pd.randoItems == null || !pd.randoItems.Any())
             {
                 pd.pinLocationState = PinLocationState.Cleared;
+            }
+            else if (!hasUnobtainedItems)
+            {
+                pd.pinLocationState = PinLocationState.ClearedPersistent;
             }
         }
 
