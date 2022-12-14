@@ -154,7 +154,6 @@
 	</Target>
 
     <ItemGroup>
-      <PackageReference Include="Archipelago.MultiClient.Net" Version="3.0.1" />
       <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.2">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -294,7 +293,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Archipelago.MultiClient.Net" Version="3.1.0" />
+      <PackageReference Include="Archipelago.MultiClient.Net" Version="4.1.2" />
     </ItemGroup>
 
 </Project>

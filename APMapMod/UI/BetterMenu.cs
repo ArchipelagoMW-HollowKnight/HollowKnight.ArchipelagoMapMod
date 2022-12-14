@@ -38,13 +38,9 @@ internal static class BetterMenu
                     APMapMod.GS.IconColorR = _update ? Mathf.RoundToInt(r) : APMapMod.GS.IconColorR;
                     _sr.color = APMapMod.GS.IconColor;
                 },
-                () => APMapMod.GS.IconColorR
-            )
-            {
-                minValue = 0,
-                maxValue = 255,
-                wholeNumbers = true
-            },
+                () => APMapMod.GS.IconColorR,
+                minValue: 0, maxValue: 255, wholeNumbers: true
+            ),
             new CustomSlider(
                 "Green",
                 g =>
@@ -52,13 +48,9 @@ internal static class BetterMenu
                     APMapMod.GS.IconColorG = _update ? Mathf.RoundToInt(g) : APMapMod.GS.IconColorG;
                     _sr.color = APMapMod.GS.IconColor;
                 },
-                () => APMapMod.GS.IconColorG
-            )
-            {
-                minValue = 0,
-                maxValue = 255,
-                wholeNumbers = true
-            },
+                () => APMapMod.GS.IconColorG,
+                minValue: 0, maxValue: 255, wholeNumbers: true
+            ),
             new CustomSlider(
                 "Blue",
                 b =>
@@ -66,13 +58,9 @@ internal static class BetterMenu
                     APMapMod.GS.IconColorB = _update ? Mathf.RoundToInt(b) : APMapMod.GS.IconColorB;
                     _sr.color = APMapMod.GS.IconColor;
                 },
-                () => APMapMod.GS.IconColorB
-            )
-            {
-                minValue = 0,
-                maxValue = 255,
-                wholeNumbers = true
-            },
+                () => APMapMod.GS.IconColorB,
+                minValue: 0, maxValue: 255, wholeNumbers: true
+            ),
             new StaticPanel(
                 "preview icon",
                 CreateIcon,

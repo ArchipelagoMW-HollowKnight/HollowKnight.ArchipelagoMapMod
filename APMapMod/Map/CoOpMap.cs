@@ -110,7 +110,7 @@ namespace APMapMod.Map {
             if (!newTags.Contains("APMapMod"))
             {
                 newTags.Add("APMapMod");
-                _netClient.UpdateConnectionOptions(newTags.ToArray(), _netClient.ConnectionInfo.ItemsHandlingFlags);
+                _netClient.ConnectionInfo.UpdateConnectionOptions(newTags.ToArray(), _netClient.ConnectionInfo.ItemsHandlingFlags);
             }
             
             EnableUpdates();
@@ -567,7 +567,7 @@ namespace APMapMod.Map {
         /// <summary>
         /// Callback method for when the local user disconnects.
         /// </summary>
-        private void netClient_OnDisconnect(CloseEventArgs eventArgs) { 
+        private void netClient_OnDisconnect(string reason) {
             DisableUpdates();
 
             // Reset variables to their initial values
