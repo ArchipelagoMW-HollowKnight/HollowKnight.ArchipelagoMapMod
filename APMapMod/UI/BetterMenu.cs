@@ -39,9 +39,7 @@ internal static class BetterMenu
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorR,
-                0,
-                255,
-                true
+                minValue: 0, maxValue: 255, wholeNumbers: true
             ),
             new CustomSlider(
                 "Green",
@@ -51,9 +49,7 @@ internal static class BetterMenu
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorG,
-                0,
-                255,
-                true
+                minValue: 0, maxValue: 255, wholeNumbers: true
             ),
             new CustomSlider(
                 "Blue",
@@ -63,9 +59,7 @@ internal static class BetterMenu
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorB,
-                0,
-                255,
-                true
+                minValue: 0, maxValue: 255, wholeNumbers: true
             ),
             new StaticPanel(
                 "preview icon",
