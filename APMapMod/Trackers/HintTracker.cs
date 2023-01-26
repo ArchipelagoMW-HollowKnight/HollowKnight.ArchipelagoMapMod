@@ -8,12 +8,12 @@ namespace APMapMod.Trackers;
 
 public class HintTracker
 {
-    private static ArchipelagoSession _session;
+    private static ArchipelagoSession session;
     
     public static void Hook()
     {
-        _session = Archipelago.HollowKnight.Archipelago.Instance.session;
-        _session.Socket.PacketReceived += OnHint;
+        session = APMapMod.Instance.session;
+        session.Socket.PacketReceived += OnHint;
     }
 
     private static void OnHint(ArchipelagoPacketBase packet)
@@ -26,10 +26,10 @@ public class HintTracker
         APMapMod.Instance.LogDebug($"hint packet found. item: {hint.Item.Item} location: {hint.Item.Location} player: {hint.Item.Player}");
 
         // ignore items in other players worlds.
-        if (hint.Item.Player != _session.ConnectionInfo.Slot)
+        if (hint.Item.Player != session.ConnectionInfo.Slot)
             return;
 
-        var apLocation = _session.Locations.GetLocationNameFromId(hint.Item.Location);
+        var apLocation = session.Locations.GetLocationNameFromId(hint.Item.Location);
         var location = apLocation;
         var item = 0;
         

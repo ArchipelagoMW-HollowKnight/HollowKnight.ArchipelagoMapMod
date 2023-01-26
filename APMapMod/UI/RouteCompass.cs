@@ -1,5 +1,7 @@
-﻿using APMapMod.Data;
+﻿using System.Linq;
+using APMapMod.Data;
 using APMapMod.Settings;
+using Modding.Utils;
 using UnityEngine;
 using SM = UnityEngine.SceneManagement.SceneManager;
 
@@ -39,65 +41,65 @@ namespace APMapMod.UI
             compass.SetActive(false);
         }
 
-        // public static void UpdateCompass()
-        // {
-        //     if (compass == null) return;
-        //
-        //     if (CompassC != null && TransitionPersistent.selectedRoute.Any())
-        //     {
-        //         string transition = TransitionPersistent.selectedRoute.First();
-        //         string scene = PathfinderData.GetScene(transition);
-        //         string gate = "";
-        //
-        //         if (Utils.CurrentScene() == scene)
-        //         {
-        //             if (PathfinderData.doorObjectsByTransition.ContainsKey(transition))
-        //             {
-        //                 gate = PathfinderData.doorObjectsByTransition[transition];
-        //             }
-        //             else if (TransitionData.IsInTransitionLookup(transition))
-        //             {
-        //                 gate = TransitionData.GetTransitionDoor(transition);
-        //             }
-        //             else if (transition.Contains("[") && transition.Contains("]"))
-        //             {
-        //                 gate = transition.Split(']')[0].Split('[')[1];
-        //             }
-        //         }
-        //         else if ((transition.IsStagTransition() || transition.IsTramTransition())
-        //             && PathfinderData.doorObjectsByScene.ContainsKey(Utils.CurrentScene()))
-        //         {
-        //             gate = PathfinderData.doorObjectsByScene[Utils.CurrentScene()];
-        //         }
-        //
-        //         if (gate == "")
-        //         {
-        //             compass.SetActive(false);
-        //             return;
-        //         }
-        //
-        //         GameObject gateObject = UnityExtensions.FindGameObject(SM.GetActiveScene(), gate);
-        //
-        //         if (gateObject != null)
-        //         {
-        //             CompassC.trackedObjects = new() { gateObject };
-        //             compass.SetActive(true);
-        //             return;
-        //         }
-        //
-        //         GameObject gateObject2 = UnityExtensions.FindGameObject(SM.GetActiveScene(), "_Transition Gates/" + gate);
-        //
-        //         if (gateObject2 != null)
-        //         {
-        //             CompassC.trackedObjects = new() { gateObject2 };
-        //             compass.SetActive(true);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         compass.SetActive(false);
-        //     }
-        // }
+        public static void UpdateCompass()
+        {
+            if (compass == null) return;
+        
+            if (CompassC != null && TransitionPersistent.selectedRoute.Any())
+            {
+                string transition = TransitionPersistent.selectedRoute.First();
+                string scene = PathfinderData.GetScene(transition);
+                string gate = "";
+        
+                if (Utils.CurrentScene() == scene)
+                {
+                    if (PathfinderData.doorObjectsByTransition.ContainsKey(transition))
+                    {
+                        gate = PathfinderData.doorObjectsByTransition[transition];
+                    }
+                    else if (TransitionData.IsInTransitionLookup(transition))
+                    {
+                        gate = TransitionData.GetTransitionDoor(transition);
+                    }
+                    else if (transition.Contains("[") && transition.Contains("]"))
+                    {
+                        gate = transition.Split(']')[0].Split('[')[1];
+                    }
+                }
+                else if ((transition.IsStagTransition() || transition.IsTramTransition())
+                    && PathfinderData.doorObjectsByScene.ContainsKey(Utils.CurrentScene()))
+                {
+                    gate = PathfinderData.doorObjectsByScene[Utils.CurrentScene()];
+                }
+        
+                if (gate == "")
+                {
+                    compass.SetActive(false);
+                    return;
+                }
+        
+                GameObject gateObject = UnityExtensions.FindGameObject(SM.GetActiveScene(), gate);
+        
+                if (gateObject != null)
+                {
+                    CompassC.trackedObjects = new() { gateObject };
+                    compass.SetActive(true);
+                    return;
+                }
+        
+                GameObject gateObject2 = UnityExtensions.FindGameObject(SM.GetActiveScene(), "_Transition Gates/" + gate);
+        
+                if (gateObject2 != null)
+                {
+                    CompassC.trackedObjects = new() { gateObject2 };
+                    compass.SetActive(true);
+                }
+            }
+            else
+            {
+                compass.SetActive(false);
+            }
+        }
 
         public static bool IsCompassEnabled()
         {

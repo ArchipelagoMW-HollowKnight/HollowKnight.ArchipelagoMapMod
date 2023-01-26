@@ -47,7 +47,6 @@ namespace APMapMod.Map
 
         private static void HeroController_Start(On.HeroController.orig_Start orig, HeroController self)
         {
-            
             try
             {
                 APMapMod.Instance.Log("Setting up internal Logic.");
@@ -72,8 +71,8 @@ namespace APMapMod.Map
                 Dependencies.BenchwarpVersionCheck();
                 MainData.SetUsedPinDefs();
                 MainData.SetLogicLookup();
-                //TransitionData.SetTransitionLookup();
-                //PathfinderData.Load();
+                TransitionData.SetTransitionLookup();
+                PathfinderData.Load();
                 //Pathfinder.Initialize();
                 //Pathfinder.UpdateProgression();
 
@@ -90,10 +89,11 @@ namespace APMapMod.Map
         }
 
         // Called every time after a new GameMap is created (once per save load)
-        private static void GameManager_SetGameMap(On.GameManager.orig_SetGameMap orig, GameManager self, GameObject go_gameMap)
+        private static void GameManager_SetGameMap(On.GameManager.orig_SetGameMap orig, GameManager self,
+            GameObject go_gameMap)
         {
             orig(self, go_gameMap);
-            
+
             GameMap gameMap = go_gameMap.GetComponent<GameMap>();
 
             MapRooms.AddExtraComponentsToMap(gameMap);
@@ -150,7 +150,8 @@ namespace APMapMod.Map
                     || APMapMod.LS.mapMode == MapMode.TransitionRando
                     || APMapMod.LS.mapMode == MapMode.TransitionRandoAlt))
             {
-                foreach (Transform roomObj in self.transform.Cast<Transform>().Where(t => t.name == "WHITE_PALACE" || t.name == "GODS_GLORY"))
+                foreach (Transform roomObj in self.transform.Cast<Transform>()
+                             .Where(t => t.name == "WHITE_PALACE" || t.name == "GODS_GLORY"))
                 {
                     roomObj.gameObject.SetActive(true);
 
@@ -163,7 +164,7 @@ namespace APMapMod.Map
                         }
 
                         foreach (Transform roomObj3 in roomObj2.transform.Cast<Transform>()
-                            .Where(r => r.name.Contains("Area Name")))
+                                     .Where(r => r.name.Contains("Area Name")))
                         {
                             roomObj3.gameObject.SetActive(true);
                         }
@@ -233,19 +234,26 @@ namespace APMapMod.Map
             {
                 if (InputHandler.Instance.inputActions.down.IsPressed)
                 {
-                    self.transform.position = new Vector3(self.transform.position.x, self.transform.position.y + self.panSpeed * Time.deltaTime, self.transform.position.z);
+                    self.transform.position = new Vector3(self.transform.position.x,
+                        self.transform.position.y + self.panSpeed * Time.deltaTime, self.transform.position.z);
                 }
+
                 if (InputHandler.Instance.inputActions.up.IsPressed)
                 {
-                    self.transform.position = new Vector3(self.transform.position.x, self.transform.position.y - self.panSpeed * Time.deltaTime, self.transform.position.z);
+                    self.transform.position = new Vector3(self.transform.position.x,
+                        self.transform.position.y - self.panSpeed * Time.deltaTime, self.transform.position.z);
                 }
+
                 if (InputHandler.Instance.inputActions.left.IsPressed)
                 {
-                    self.transform.position = new Vector3(self.transform.position.x + self.panSpeed * Time.deltaTime, self.transform.position.y, self.transform.position.z);
+                    self.transform.position = new Vector3(self.transform.position.x + self.panSpeed * Time.deltaTime,
+                        self.transform.position.y, self.transform.position.z);
                 }
+
                 if (InputHandler.Instance.inputActions.right.IsPressed)
                 {
-                    self.transform.position = new Vector3(self.transform.position.x - self.panSpeed * Time.deltaTime, self.transform.position.y, self.transform.position.z);
+                    self.transform.position = new Vector3(self.transform.position.x - self.panSpeed * Time.deltaTime,
+                        self.transform.position.y, self.transform.position.z);
                 }
             }
 

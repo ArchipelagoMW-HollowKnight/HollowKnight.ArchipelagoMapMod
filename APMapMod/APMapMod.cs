@@ -18,7 +18,7 @@ namespace APMapMod
 
         public bool ToggleButtonInsideMenu { get; }
         
-        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString() + "-LT5";
+        public override string GetVersion() => GetType().Assembly.GetName().Version.ToString();
 
         public override int LoadPriority() => 10;
 
@@ -85,10 +85,9 @@ namespace APMapMod
 
         private void Hook()
         {
-            _enabled = true;
             Log("Activating mod");
             session = Archipelago.HollowKnight.Archipelago.Instance.session;
-            
+
             // Load default/custom assets
             SpriteManager.LoadPinSprites();
             Colors.LoadCustomColors(); 
@@ -129,7 +128,8 @@ namespace APMapMod
             
             // enable player icon tracking.
             CoOpMap.Hook();
-
+            
+            _enabled = true;
             Log("Done Activating Mod");
         }
 

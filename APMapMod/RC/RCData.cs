@@ -2,12 +2,14 @@
 using System.Linq;
 using APMapMod.Data;
 using APMapMod.RC.RandomizerData;
+using ItemChanger;
 using RandomizerCore.Logic;
 using RoomDef = APMapMod.Data.RoomDef;
+using StartDef = APMapMod.RC.RandomizerData.StartDef;
 
 namespace APMapMod.RC;
 
-public class RCData
+public static class RCData
 {
     // Transitions
     public static Dictionary<string, TransitionDef> transitions;
@@ -17,6 +19,9 @@ public class RCData
     
     // Locations
     public static Dictionary<string, LocationDef> locations;
+    
+    // Starts
+    public static Dictionary<string, StartDef> starts;
     
     private static readonly (LogicManagerBuilder.JsonType type, string fileName)[] Files = new[]
     {
@@ -71,6 +76,59 @@ public class RCData
 
     #endregion
     
+    #region Transition Methods
+    public static TransitionDef GetTransitionDef(string name)
+    {
+        if (transitions.TryGetValue(name, out TransitionDef def)) return def;
+        return null;
+    }
+
+    public static IEnumerable<string> GetMapAreaTransitionNames()
+    {
+        return transitions.Where(kvp => kvp.Value.IsMapAreaTransition).Select(kvp => kvp.Key);
+    }
+
+    public static IEnumerable<string> GetAreaTransitionNames()
+    {
+        return transitions.Where(kvp => kvp.Value.IsTitledAreaTransition).Select(kvp => kvp.Key);
+    }
+
+    public static IEnumerable<string> GetRoomTransitionNames()
+    {
+        return transitions.Keys;
+    }
+
+    public static bool IsMapAreaTransition(string str)
+    {
+        return transitions.TryGetValue(str, out TransitionDef def) && def.IsMapAreaTransition;
+    }
+
+    public static bool IsAreaTransition(string str)
+    {
+        return transitions.TryGetValue(str, out TransitionDef def) && def.IsTitledAreaTransition;
+    }
+
+    public static bool IsTransition(string str)
+    {
+        return transitions.ContainsKey(str);
+    }
+
+    public static bool IsTransitionWithEntry(string str)
+    {
+        return transitions.TryGetValue(str, out var def) && def.Sides != TransitionSides.OneWayOut;
+    }
+
+    public static bool IsExitOnlyTransition(string str)
+    {
+        return transitions.TryGetValue(str, out var def) && def.Sides == TransitionSides.OneWayOut;
+    }
+
+    public static bool IsEnterOnlyTransition(string str)
+    {
+        return transitions.TryGetValue(str, out var def) && def.Sides == TransitionSides.OneWayIn;
+    }
+    #endregion
+    
     /// <summary>
     /// Creates a new LogicManager, for our use on the map.
     /// </summary>
@@ -88,6 +146,7 @@ public class RCData
         
         transitions = JsonUtil.Deserialize<Dictionary<string, TransitionDef>>("APMapMod.Resources.Data.transitions.json");
         rooms = JsonUtil.Deserialize<Dictionary<string, RoomDef>>("APMapMod.Resources.Data.rooms.json");
+        //starts = JsonUtil.Deserialize<Dictionary<string, StartDef>>("APMapMod.Resources.Data.starts.json");
         //locations = JsonUtil.Deserialize<Dictionary<string, LocationDef>>("RandomizerMod.Resources.Data.locations.json");
 
         return new LogicManager(lmb);

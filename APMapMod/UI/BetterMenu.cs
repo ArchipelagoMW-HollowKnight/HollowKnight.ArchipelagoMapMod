@@ -12,7 +12,6 @@ internal static class BetterMenu
 {
     private static Menu _menuRef;
     private static Image _sr;
-    private static bool _update;
 
     public static MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
     {
@@ -35,7 +34,7 @@ internal static class BetterMenu
                 "Red",
                 r =>
                 {
-                    APMapMod.GS.IconColorR = _update ? Mathf.RoundToInt(r) : APMapMod.GS.IconColorR;
+                    APMapMod.GS.IconColorR = Mathf.RoundToInt(r);
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorR,
@@ -45,7 +44,7 @@ internal static class BetterMenu
                 "Green",
                 g =>
                 {
-                    APMapMod.GS.IconColorG = _update ? Mathf.RoundToInt(g) : APMapMod.GS.IconColorG;
+                    APMapMod.GS.IconColorG = Mathf.RoundToInt(g);
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorG,
@@ -55,7 +54,7 @@ internal static class BetterMenu
                 "Blue",
                 b =>
                 {
-                    APMapMod.GS.IconColorB = _update ? Mathf.RoundToInt(b) : APMapMod.GS.IconColorB;
+                    APMapMod.GS.IconColorB = Mathf.RoundToInt(b);
                     _sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorB,
@@ -72,7 +71,6 @@ internal static class BetterMenu
     private static void BuildUpdate(object sender, ContainerBuiltEventArgs containerBuiltEventArgs)
     {
         _menuRef.Update();
-        _update = true;
     }
 
     private static void CreateIcon(GameObject go)

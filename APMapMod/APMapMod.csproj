@@ -8,7 +8,7 @@
     <Product>APMapMod</Product>
     <Description>A Hollow Knight mod that works with the Archipelago Multiworld randomizer to put pins on the map for all checks.</Description>
     <Authors>Kono Tyran</Authors>
-    <AssemblyVersion>0.3.0.*</AssemblyVersion>
+    <AssemblyVersion>0.4.0.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
     <LangVersion>latest</LangVersion>
     <HollowKnightRefs>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
@@ -173,7 +173,7 @@
         <CopyLocal>False</CopyLocal>
       </Reference>
       <Reference Include="Archipelago.HollowKnight">
-        <HintPath>$(HollowKnightRefs)\Mods\Archipelago\Archipelago.HollowKnight.dll</HintPath>
+        <HintPath>$(HollowKnightRefs)\Mods\Archipelago.HollowKnight\Archipelago.HollowKnight.dll</HintPath>
         <CopyLocal>False</CopyLocal>
       </Reference>
       <Reference Include="MagicUI">
@@ -293,7 +293,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Archipelago.MultiClient.Net" Version="4.1.2" />
+      <PackageReference Include="Archipelago.MultiClient.Net" Version="4.2.2" />
     </ItemGroup>
 
 </Project>

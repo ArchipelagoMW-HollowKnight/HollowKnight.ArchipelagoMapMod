@@ -66,7 +66,7 @@ public static class APLogicManager
                 {
                     logic = APMapMod.LS.Context.LM.GetLogicDef(entry.Key)
                 };
-                APMapMod.Instance.LogDebug($"Creating Item Placement [{id}] [{aptag?.Player}] {item.item?.Name} ({abstractItem.name}) at {entry.Key}");
+                APMapMod.Instance.LogDebug($"Creating Item Placement [{id}] [{aptag?.Player}] {item.item?.Name} at {entry.Key}");
                 APMapMod.LS.Context.itemPlacements.Add(new ItemPlacement(item, location));
             }
         }
