@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Archipelago.HollowKnight.SlotData;
 using Newtonsoft.Json;
 using RandomizerCore;
@@ -72,34 +73,20 @@ public class TrackerData
     {
         ctx = context;
         lm = ctx.LM;
-
         Reset();
     }
 
     public void Reset()
     {
-        List<RandoItem> items = obtainedItems.Where(i => !outOfLogicObtainedItems.Contains(i))
-            .Select(i => ctx.itemPlacements[i].Item).ToList();
-
-        // HashSet<string> transitionProgression = new();
-        // foreach (KeyValuePair<string, string> kvp in visitedTransitions)
-        // {
-        //     if (outOfLogicVisitedTransitions.Contains(kvp.Key)) continue;
-        //     transitionProgression.Add(kvp.Key);
-        //     transitionProgression.Add(kvp.Value);
-        // }
-
         pm = new(lm, ctx);
-
-        pm.Add(items);
-        //pm.Add(transitionProgression.Select(t => lm.GetTransition(t)));
 
         // note: location costs are ignored in the tracking, to prevent providing unintended information, by using p.location.logic rather than p.location
         // it is assumed that no information is divulged from the regular location logic and transition logic
 
         mu = pm.mu;
         mu.AddWaypoints(lm.Waypoints);
-        mu.AddTransitions((lm.TransitionLookup.Values));
+        mu.AddTransitions(lm.TransitionLookup.Values);
+
         mu.AddEntries(ctx.Vanilla.Select(v => new DelegateUpdateEntry(v.Location, pm =>
         {
             pm.Add(v.Item, v.Location);
@@ -108,6 +95,7 @@ public class TrackerData
                 pm.Add(ilw.GetReachableEffect());
             }
         })));
+
         if (ctx.itemPlacements != null)
         {
             mu.AddEntries(ctx.itemPlacements.Select((p, id) =>
@@ -163,7 +151,14 @@ public class TrackerData
         if (options.RandomizeNail)
             pm.Set("RANDOMNAIL", 1);
 
-        pm.Add(lm.GetTransition("Tutorial_01[right1]"));
+        APMapMod.Instance.LogDebug("adding tutorial to tracker updates");
+        TrackerUpdate.trackerUpdates.Add(() =>
+        {
+            APMapMod.Instance.LogDebug("executing tutorial adding update");
+            pm.Add(lm.GetTransition("Tutorial_01[right1]"));
+            APMapMod.Instance.LogDebug("finished executing tutorial adding update");
+        });
+        
     }
 
     private Action<ProgressionManager> OnCanGetLocation(int id)
@@ -171,9 +166,14 @@ public class TrackerData
         return pm =>
         {
             (RandoItem item, RandoLocation location) = ctx.itemPlacements[id];
+            if (location is ILocationWaypoint ilw)
+            {
+                pm.Add(ilw.GetReachableEffect());
+            }
+
             if (outOfLogicObtainedItems.Remove(id))
             {
-                pm.Add(item);
+                pm.Add(item, location);
             }
 
             if (!clearedLocations.Contains(location.Name) && !previewedLocations.Contains(location.Name))
@@ -191,12 +191,12 @@ public class TrackerData
 
             if (!pm.Has(source.lt.term))
             {
-                pm.Add(source);
+                pm.Add(source.GetReachableEffect());
             }
 
-            if (outOfLogicVisitedTransitions.Remove(source.Name) && !pm.Has(target.lt.term))
+            if (outOfLogicVisitedTransitions.Remove(source.Name))
             {
-                pm.Add(target);
+                pm.Add(target, source);
             }
 
             if (!visitedTransitions.ContainsKey(source.Name))
@@ -212,7 +212,7 @@ public class TrackerData
         obtainedItems.Add(id);
         if (AllowSequenceBreaks || rl.logic.CanGet(pm))
         {
-            pm.Add(ri);
+            pm.Add(ri, rl);
         }
         else
         {
@@ -244,13 +244,10 @@ public class TrackerData
             LogicTransition tt = lm.GetTransition(target);
             if (!pm.Has(st.term))
             {
-                pm.Add(st);
+                pm.Add(st.GetReachableEffect());
             }
 
-            if (!pm.Has(tt.term))
-            {
-                pm.Add(tt);
-            }
+            pm.Add(tt, st);
         }
         else
         {
@@ -284,10 +281,6 @@ public class TrackerData
         public override void OnAdd(ProgressionManager pm)
         {
             onAdd?.Invoke(pm);
-        }
-
-        public override void OnRemove(ProgressionManager pm)
-        {
         }
     }
 }

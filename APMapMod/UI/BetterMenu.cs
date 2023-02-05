@@ -10,14 +10,14 @@ namespace APMapMod.UI;
 
 internal static class BetterMenu
 {
-    private static Menu _menuRef;
-    private static Image _sr;
+    private static Menu menuRef;
+    private static Image sr;
 
     public static MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
     {
-        _menuRef ??= PrepareMenu();
-        _menuRef.OnBuilt += BuildUpdate;
-        return _menuRef.GetMenuScreen(modListMenu);
+        menuRef ??= PrepareMenu();
+        menuRef.OnBuilt += BuildUpdate;
+        return menuRef.GetMenuScreen(modListMenu);
     }
 
     private static Menu PrepareMenu()
@@ -27,15 +27,15 @@ internal static class BetterMenu
             new TextPanel("Enter the Red Green and Blue values for your icon color", 800f),
             new MenuButton("Random", "", _ => {
                 APMapMod.GS.IconColor = Utils.GetRandomLightColor();
-                _sr.color = APMapMod.GS.IconColor;
-                _menuRef.Update();
+                sr.color = APMapMod.GS.IconColor;
+                menuRef.Update();
             }),
             new CustomSlider(
                 "Red",
                 r =>
                 {
                     APMapMod.GS.IconColorR = Mathf.RoundToInt(r);
-                    _sr.color = APMapMod.GS.IconColor;
+                    sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorR,
                 minValue: 0, maxValue: 255, wholeNumbers: true
@@ -45,7 +45,7 @@ internal static class BetterMenu
                 g =>
                 {
                     APMapMod.GS.IconColorG = Mathf.RoundToInt(g);
-                    _sr.color = APMapMod.GS.IconColor;
+                    sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorG,
                 minValue: 0, maxValue: 255, wholeNumbers: true
@@ -55,7 +55,7 @@ internal static class BetterMenu
                 b =>
                 {
                     APMapMod.GS.IconColorB = Mathf.RoundToInt(b);
-                    _sr.color = APMapMod.GS.IconColor;
+                    sr.color = APMapMod.GS.IconColor;
                 },
                 () => APMapMod.GS.IconColorB,
                 minValue: 0, maxValue: 255, wholeNumbers: true
@@ -65,17 +65,47 @@ internal static class BetterMenu
                 CreateIcon,
                 100f
             ),
+            new CustomSlider(
+                "Gameplay Hints shown",
+                b =>
+                {
+                    APMapMod.GS.gameplayHints = Mathf.RoundToInt(b);
+                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                },
+                () => APMapMod.GS.gameplayHints,
+                minValue: 0, maxValue: 20, wholeNumbers: true
+            ),
+            new CustomSlider(
+                "Pause Menu Hints Shown",
+                b =>
+                {
+                    APMapMod.GS.pauseMenuHints = Mathf.RoundToInt(b);
+                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                },
+                () => APMapMod.GS.pauseMenuHints,
+                minValue: 0, maxValue: 20, wholeNumbers: true
+            ), 
+            new CustomSlider(
+                "Hint Text Size",
+                b =>
+                {
+                    APMapMod.GS.hintFontSize = Mathf.RoundToInt(b);
+                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                },
+                () => APMapMod.GS.hintFontSize,
+                minValue: 10, maxValue: 50, wholeNumbers: true
+            ),
     });
     }
 
     private static void BuildUpdate(object sender, ContainerBuiltEventArgs containerBuiltEventArgs)
     {
-        _menuRef.Update();
+        menuRef.Update();
     }
 
     private static void CreateIcon(GameObject go)
     {
-        var knightIcon = new GameObject("Knight Icon")
+        var knightIcon = new GameObject("APKnight Icon")
         {
             transform =
             {
@@ -86,9 +116,9 @@ internal static class BetterMenu
         var tex = GUIController.Instance.Images["CompassIcon"];
         var compassIcon = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 55);
         knightIcon.AddComponent<CanvasRenderer>();
-        _sr = knightIcon.AddComponent<Image>();
-        _sr.sprite = compassIcon;
-        _sr.color = APMapMod.GS.IconColor;
+        sr = knightIcon.AddComponent<Image>();
+        sr.sprite = compassIcon;
+        sr.color = APMapMod.GS.IconColor;
         knightIcon.transform.localPosition = new Vector3(0, -tex.height/2f, 0);
         knightIcon.layer = 27; // uGUI layer
         knightIcon.SetScale(1,1);

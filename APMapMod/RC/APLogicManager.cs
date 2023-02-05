@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using APMapMod.UI;
 using Archipelago.HollowKnight.IC;
 using ItemChanger;
 using ItemChanger.Internal;
@@ -88,13 +90,14 @@ public static class APLogicManager
 
             APMapMod.LS.Context.itemPlacements.Add(new ItemPlacement(item, location));
         }
-    
-        // setup our trackers if they were not loaded from our LS
-        //if(APMapMod.LS.tracker == null)
-            APMapMod.LS.tracker?.Setup(APMapMod.LS.Context);
-        
-        //if(APMapMod.LS.trackerWithoutSequenceBreaks == null)
+
+        new Thread(() =>
+        {
             APMapMod.LS.trackerWithoutSequenceBreaks?.Setup(APMapMod.LS.Context);
+            APMapMod.LS.tracker?.Setup(APMapMod.LS.Context);
+            HintDisplay.SortHints();
+        }).Start();
+
             
         ItemChangerMod.Modules.Remove(typeof(TrackerUpdate));
         ItemChangerMod.Modules.Add<TrackerUpdate>();

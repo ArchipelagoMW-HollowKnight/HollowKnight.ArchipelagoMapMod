@@ -32,8 +32,6 @@ namespace APMapMod
 
         public ArchipelagoSession session;
 
-        private bool _enabled;
-
         public override void Initialize()
         {
             Log("Initializing...");
@@ -78,8 +76,7 @@ namespace APMapMod
                 // default value lets randomize it!
                 GS.IconColor= Utils.GetRandomLightColor();
             }
-
-            _enabled = true;
+            
             Log("Initialization complete.");
         }
 
@@ -101,9 +98,6 @@ namespace APMapMod
             // Track when items are picked up/Geo Rocks are broken
             ItemTracker.Hook();
             GeoRockTracker.Hook();
-            
-            // Track when Hints are given in AP
-            HintTracker.Hook();
 
             // Remove Map Markers from the Shop (when mod is enabled)
             ShopChanger.Hook();
@@ -129,7 +123,6 @@ namespace APMapMod
             // enable player icon tracking.
             CoOpMap.Hook();
             
-            _enabled = true;
             Log("Done Activating Mod");
         }
 
@@ -149,7 +142,7 @@ namespace APMapMod
         
         public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
         {
-            return _enabled ? BetterMenu.GetMenuScreen(modListMenu, toggleDelegates) : modListMenu;
+            return BetterMenu.GetMenuScreen(modListMenu, toggleDelegates);
         }
     }
 }

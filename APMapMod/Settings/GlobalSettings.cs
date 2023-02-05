@@ -75,6 +75,10 @@ namespace APMapMod.Settings
             }
         }
 
+        public int gameplayHints = 3;
+        public int hintFontSize = 30;
+        public int pauseMenuHints = 9;
+
         public void ToggleControlPanel()
         {
             controlPanelOn = !controlPanelOn;

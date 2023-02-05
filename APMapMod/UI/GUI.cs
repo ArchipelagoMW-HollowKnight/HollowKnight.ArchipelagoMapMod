@@ -34,8 +34,6 @@ namespace APMapMod.UI
 
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += HandleSceneChanges;
             Events.OnBeginSceneTransition += Events_OnBeginSceneTransition;
-
-            GUIController.Setup();
         }
 
         public static void Unhook()
@@ -65,6 +63,7 @@ namespace APMapMod.UI
 
             GUIController.Unload();
 
+            HintDisplay.Destroy();
             PauseMenu.Destroy();
             MapText.Destroy();
             ControlPanel.Destroy();
@@ -96,6 +95,7 @@ namespace APMapMod.UI
             TransitionWorldMap.Build();
             TransitionQuickMap.Build();
             Benchwarp.Build();
+            HintDisplay.Build();
         }
 
         private static void GameMap_WorldMap(On.GameMap.orig_WorldMap orig, GameMap self)
