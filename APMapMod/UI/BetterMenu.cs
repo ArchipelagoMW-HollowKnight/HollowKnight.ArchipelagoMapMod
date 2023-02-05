@@ -1,3 +1,4 @@
+using System;
 using Modding;
 using Satchel;
 using Satchel.BetterMenus;
@@ -16,7 +17,6 @@ internal static class BetterMenu
     public static MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates)
     {
         menuRef ??= PrepareMenu();
-        menuRef.OnBuilt += BuildUpdate;
         return menuRef.GetMenuScreen(modListMenu);
     }
 
@@ -25,7 +25,8 @@ internal static class BetterMenu
         return new Menu("Archipelago Map Mod", new Element[]
         {
             new TextPanel("Enter the Red Green and Blue values for your icon color", 800f),
-            new MenuButton("Random", "", _ => {
+            new MenuButton("Random", "", _ =>
+            {
                 APMapMod.GS.IconColor = Utils.GetRandomLightColor();
                 sr.color = APMapMod.GS.IconColor;
                 menuRef.Update();
@@ -69,8 +70,9 @@ internal static class BetterMenu
                 "Gameplay Hints shown",
                 b =>
                 {
+                    //APMapMod.Instance.Log($"Setting gameplay hints to {b} from satchel");
                     APMapMod.GS.gameplayHints = Mathf.RoundToInt(b);
-                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                    HintDisplay.UpdateDisplay();
                 },
                 () => APMapMod.GS.gameplayHints,
                 minValue: 0, maxValue: 20, wholeNumbers: true
@@ -79,28 +81,25 @@ internal static class BetterMenu
                 "Pause Menu Hints Shown",
                 b =>
                 {
+                    //APMapMod.Instance.Log($"Setting pause menu hints to {b} from satchel");
                     APMapMod.GS.pauseMenuHints = Mathf.RoundToInt(b);
-                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                    HintDisplay.UpdateDisplay();
                 },
                 () => APMapMod.GS.pauseMenuHints,
                 minValue: 0, maxValue: 20, wholeNumbers: true
-            ), 
+            ),
             new CustomSlider(
                 "Hint Text Size",
                 b =>
                 {
+                    //APMapMod.Instance.Log($"Setting hint size to {b} from satchel");
                     APMapMod.GS.hintFontSize = Mathf.RoundToInt(b);
-                    HintDisplay.UpdateDisplay(APMapMod.GS.pauseMenuHints);
+                    HintDisplay.UpdateDisplay();
                 },
                 () => APMapMod.GS.hintFontSize,
                 minValue: 10, maxValue: 50, wholeNumbers: true
             ),
-    });
-    }
-
-    private static void BuildUpdate(object sender, ContainerBuiltEventArgs containerBuiltEventArgs)
-    {
-        menuRef.Update();
+        });
     }
 
     private static void CreateIcon(GameObject go)
@@ -119,8 +118,8 @@ internal static class BetterMenu
         sr = knightIcon.AddComponent<Image>();
         sr.sprite = compassIcon;
         sr.color = APMapMod.GS.IconColor;
-        knightIcon.transform.localPosition = new Vector3(0, -tex.height/2f, 0);
+        knightIcon.transform.localPosition = new Vector3(0, -tex.height / 2f, 0);
         knightIcon.layer = 27; // uGUI layer
-        knightIcon.SetScale(1,1);
+        knightIcon.SetScale(1, 1);
     }
 }

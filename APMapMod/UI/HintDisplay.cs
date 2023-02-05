@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Archipelago.HollowKnight.IC;
 using Archipelago.MultiClient.Net;
@@ -7,15 +6,13 @@ using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Models;
 using ItemChanger;
 using ItemChanger.Internal;
-using ItemChanger.Locations;
 using MagicUI.Core;
 using MagicUI.Elements;
 using UnityEngine.UI;
-using Container = MagicUI.Core.Container;
 
 namespace APMapMod.UI;
 
-public class HintDisplay
+public static class HintDisplay
 {
     private static LayoutRoot layout;
     private static readonly List<TextFormatter<Hint>> Formatters = new();
@@ -65,7 +62,7 @@ public class HintDisplay
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center,
                     Font = MagicUI.Core.UI.Perpetua,
-                    FontSize = APMapMod.GS.hintFontSize,
+                    FontSize =  APMapMod.GS.hintFontSize,
                 };
                 TextFormatter<Hint> f = new(layout, null, FormatHint)
                 {
@@ -99,6 +96,7 @@ public class HintDisplay
         On.UIManager.UIGoToPauseMenu -= OpenPause;
         On.UIManager.UIClosePauseMenu -= ClosePause;
 
+        hints.Clear();
         layout?.Destroy();
         layout = null;
     }
@@ -130,7 +128,7 @@ public class HintDisplay
         visible = true;
     }
 
-    public static void UpdateHints(Hint[] arrayHints)
+    private static void UpdateHints(Hint[] arrayHints)
     {
         hints = arrayHints.ToList();
 #if DEBUG

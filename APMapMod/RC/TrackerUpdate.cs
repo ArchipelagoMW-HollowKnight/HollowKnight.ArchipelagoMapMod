@@ -121,7 +121,7 @@ public class TrackerUpdate : Module
                 }
 
                 OnFinishedUpdate?.Invoke();
-                HintDisplay.SortHints();
+                MenuChanger.ThreadSupport.BeginInvoke(HintDisplay.SortHints);
             }
             catch
             {

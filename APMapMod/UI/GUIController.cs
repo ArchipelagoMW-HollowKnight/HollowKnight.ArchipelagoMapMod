@@ -34,11 +34,11 @@ namespace APMapMod.UI
 
         public void StartScripts()
         {
-            StartCoroutine("UpdateSelectedScene");
+            StartCoroutine(nameof(UpdateSelectedScene));
 
-            StartCoroutine("UpdateSelectedPin");
+            StartCoroutine(nameof(UpdateSelectedPin));
 
-            StartCoroutine("UpdateSelectedBench");
+            StartCoroutine(nameof(UpdateSelectedBench));
         }
 
         public void Update()
